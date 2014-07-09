@@ -40,6 +40,10 @@ bool MainScene::init()
         return false;
     }
     
+    auto map = TMXTiledMap::create("map/stage0.tmx");
+    this->addChild(map);
+    this->setMap(map);
+    
     // Playerの生成
     auto player = Player::create();
     player->setPosition(Vec2(100, 160));
@@ -83,5 +87,6 @@ void MainScene::update(float dt)
     if (this->getIsPress()) {
         _player->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
     }
+    _map->setPosition(_map->getPosition() - Vec2(100 * dt, 0));
     
 }
