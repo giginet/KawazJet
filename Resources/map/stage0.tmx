@@ -6,9 +6,9 @@
  <tileset firstgid="2" name="Object" tilewidth="48" tileheight="48">
   <image source="objects.png" width="96" height="48"/>
  </tileset>
- <layer name="Terrein" width="117" height="13">
+ <layer name="Terrain" width="117" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt1NEJACAIRVHbf+kW6Ccoo8c54ARXrTpnLIa/aZpH0zwdTe1Jr9tN3X+/m0399Tc0zaMpOzTNpGkmTYEEEwssAEg=
+   eJzt1MEJACAMBMHYf9OWIIJRPGYgXz+bOKpqNA5/0zSPpnluNF29aY/O6m7q/u/rbOpff0PTPJqyQ9NMmmbSFEgwAd2TAFw=
   </data>
  </layer>
  <layer name="Object" width="117" height="13">

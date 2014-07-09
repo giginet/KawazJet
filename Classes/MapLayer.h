@@ -23,6 +23,7 @@ CC_CONSTRUCTOR_ACCESS:
 public:
 
     void update(float dt) override;
+    void onEnter() override;
 
     CREATE_FUNC(MapLayer);
     CC_SYNTHESIZE_RETAIN(Player *, _player, Player);

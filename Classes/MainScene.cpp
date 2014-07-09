@@ -24,6 +24,8 @@ Scene* MainScene::createScene()
     // 重力を設定する
     world->setGravity(GRAVITY_ACCELERATION);
     
+    world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    
     // スピードを設定する
     world->setSpeed(6.0f);
     
@@ -60,10 +62,13 @@ bool MainScene::init()
     
     this->scheduleUpdate();
     
+    auto body = PhysicsBody::create();
+    this->setPhysicsBody(body);
+    
     return true;
 }
 
-MainScene::MainScene()
+MainScene::MainScene() : rotate(0)
 {
 }
 
@@ -79,7 +84,11 @@ void MainScene::onEnterTransitionDidFinish()
 
 void MainScene::update(float dt)
 {
+    rotate += 30 * dt;
+    _map->setRotation(rotate);
+    
+    
     if (this->getIsPress()) {
         _map->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
-    }    
+    }
 }
