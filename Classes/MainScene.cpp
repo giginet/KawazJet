@@ -40,16 +40,9 @@ bool MainScene::init()
         return false;
     }
     
-    auto map = TMXTiledMap::create("map/stage0.tmx");
-    this->addChild(map);
-    this->setMap(map);
-    
-    // Playerの生成
-    auto player = Player::create();
-    player->setPosition(Vec2(100, 160));
-    this->addChild(player);
-    
-    this->setPlayer(player);
+    auto layer = MapLayer::create();
+    this->addChild(layer);
+    this->setMap(layer);
     
     // タッチしたときに浮遊する処理を追加
     auto listener = EventListenerTouchOneByOne::create();
@@ -76,17 +69,17 @@ MainScene::MainScene()
 
 MainScene::~MainScene()
 {
+    CC_SAFE_RELEASE_NULL(_map);
 }
 
 void MainScene::onEnterTransitionDidFinish()
 {
+    Layer::onEnterTransitionDidFinish();
 }
 
 void MainScene::update(float dt)
 {
     if (this->getIsPress()) {
-        _player->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
-    }
-    _map->setPosition(_map->getPosition() - Vec2(100 * dt, 0));
-    
+        _map->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
+    }    
 }

@@ -8,7 +8,7 @@
  </tileset>
  <layer name="Terrein" width="117" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt0UENACAQwLDDv2kM8OQBS5tMwWbuWYf4m6c9nvZ42uNpj6c9nvZ4CgDAqzbBcgAp
+   eJzt1NEJACAIRVHbf+kW6Ccoo8c54ARXrTpnLIa/aZpH0zwdTe1Jr9tN3X+/m0399Tc0zaMpOzTNpGkmTYEEEwssAEg=
   </data>
  </layer>
  <layer name="Object" width="117" height="13">

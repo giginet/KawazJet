@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070362CB196D111A00FF7CE1 /* MapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 070362C9196D111A00FF7CE1 /* MapLayer.cpp */; };
 		07249783196CD33F004F0600 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07249781196CD33F004F0600 /* MainScene.cpp */; };
 		07A07C00196CE7AA00545BE5 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 07A07BFF196CE7AA00545BE5 /* images */; };
 		07A07C03196CEC2C00545BE5 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A07C01196CEC2C00545BE5 /* Player.cpp */; };
@@ -217,6 +218,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		070362C9196D111A00FF7CE1 /* MapLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapLayer.cpp; path = ../Classes/MapLayer.cpp; sourceTree = "<group>"; };
+		070362CA196D111A00FF7CE1 /* MapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapLayer.h; path = ../Classes/MapLayer.h; sourceTree = "<group>"; };
 		07249781196CD33F004F0600 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = ../Classes/MainScene.cpp; sourceTree = "<group>"; };
 		07249782196CD33F004F0600 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = ../Classes/MainScene.h; sourceTree = "<group>"; };
 		07A07BFF196CE7AA00545BE5 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
@@ -348,6 +351,8 @@
 				07249782196CD33F004F0600 /* MainScene.h */,
 				07A07C01196CEC2C00545BE5 /* Player.cpp */,
 				07A07C02196CEC2C00545BE5 /* Player.h */,
+				070362C9196D111A00FF7CE1 /* MapLayer.cpp */,
+				070362CA196D111A00FF7CE1 /* MapLayer.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -529,7 +534,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = MDDB52YB8L;
+						DevelopmentTeam = 2AWR7Z4WYE;
 					};
 				};
 			};
@@ -681,6 +686,7 @@
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				070362CB196D111A00FF7CE1 /* MapLayer.cpp in Sources */,
 				07A07C03196CEC2C00545BE5 /* Player.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -758,6 +764,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -778,6 +785,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -789,6 +797,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -807,6 +816,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
