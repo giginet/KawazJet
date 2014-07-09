@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		07249783196CD33F004F0600 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07249781196CD33F004F0600 /* MainScene.cpp */; };
 		07A07C00196CE7AA00545BE5 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 07A07BFF196CE7AA00545BE5 /* images */; };
+		07A07C03196CEC2C00545BE5 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A07C01196CEC2C00545BE5 /* Player.cpp */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -218,6 +219,8 @@
 		07249781196CD33F004F0600 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = ../Classes/MainScene.cpp; sourceTree = "<group>"; };
 		07249782196CD33F004F0600 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = ../Classes/MainScene.h; sourceTree = "<group>"; };
 		07A07BFF196CE7AA00545BE5 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		07A07C01196CEC2C00545BE5 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../Classes/Player.cpp; sourceTree = "<group>"; };
+		07A07C02196CEC2C00545BE5 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../Classes/Player.h; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				07249781196CD33F004F0600 /* MainScene.cpp */,
 				07249782196CD33F004F0600 /* MainScene.h */,
+				07A07C01196CEC2C00545BE5 /* Player.cpp */,
+				07A07C02196CEC2C00545BE5 /* Player.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -672,6 +677,7 @@
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				07A07C03196CEC2C00545BE5 /* Player.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				07249783196CD33F004F0600 /* MainScene.cpp in Sources */,

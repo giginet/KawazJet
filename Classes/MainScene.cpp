@@ -10,7 +10,8 @@
 
 USING_NS_CC;
 
-const Vec2 GRAVITY_ACCELERATION = Vec2(0, -9.8);
+const Vec2 GRAVITY_ACCELERATION = Vec2(0, -3);
+const Vec2 IMPULSE_ACCELERATION = Vec2(0, 180);
 
 Scene* MainScene::createScene()
 {
@@ -39,14 +40,28 @@ bool MainScene::init()
         return false;
     }
     
-    auto player = Sprite::create("player.png");
-    
-    auto body = PhysicsBody::createBox(player->getContentSize());
-    player->setPhysicsBody(body);
-    
+    // Playerの生成
+    auto player = Player::create();
     player->setPosition(Vec2(100, 160));
-    
     this->addChild(player);
+    
+    this->setPlayer(player);
+    
+    // タッチしたときに浮遊する処理を追加
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->onTouchBegan = [this](Touch *touch, Event *event) {
+        this->setIsPress(true);
+        return true;
+    };
+    listener->onTouchEnded = [this](Touch *touch, Event *event) {
+        this->setIsPress(false);
+    };
+    listener->onTouchCancelled = [this](Touch *touch, Event *event) {
+        this->setIsPress(false);
+    };
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    
+    this->scheduleUpdate();
     
     return true;
 }
@@ -61,4 +76,12 @@ MainScene::~MainScene()
 
 void MainScene::onEnterTransitionDidFinish()
 {
+}
+
+void MainScene::update(float dt)
+{
+    if (this->getIsPress()) {
+        _player->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
+    }
+    
 }

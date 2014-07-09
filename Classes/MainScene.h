@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "Player.h"
 
 class MainScene :public cocos2d::Layer
 {
@@ -20,13 +21,15 @@ public:
     
     void onEnterTransitionDidFinish() override;
     
+    CC_SYNTHESIZE(bool, _isPress, IsPress);
+    CC_SYNTHESIZE_RETAIN(Player*, _player, Player);
     CREATE_FUNC(MainScene);
     
 CC_CONSTRUCTOR_ACCESS:
     MainScene();
     virtual ~MainScene();
     bool init() override;
-    
+    void update(float dt) override;
 };
 
 #endif /* defined(__KawazJet__MainScene__) */
