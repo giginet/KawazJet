@@ -17,6 +17,7 @@ bool Player::init()
     }
     
     auto body = PhysicsBody::createBox(this->getContentSize());
+    body->setRotationEnable(false);
     this->setPhysicsBody(body);
     
     return true;

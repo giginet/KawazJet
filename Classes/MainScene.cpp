@@ -62,13 +62,12 @@ bool MainScene::init()
     
     this->scheduleUpdate();
     
-    auto body = PhysicsBody::create();
-    this->setPhysicsBody(body);
-    
     return true;
 }
 
-MainScene::MainScene() : rotate(0)
+MainScene::MainScene() :
+_isPress(false),
+_map(nullptr)
 {
 }
 
@@ -84,10 +83,6 @@ void MainScene::onEnterTransitionDidFinish()
 
 void MainScene::update(float dt)
 {
-    rotate += 30 * dt;
-    _map->setRotation(rotate);
-    
-    
     if (this->getIsPress()) {
         _map->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
     }

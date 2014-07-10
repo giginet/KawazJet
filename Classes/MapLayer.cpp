@@ -13,7 +13,8 @@ USING_NS_CC;
 const Vec2 SCROLL_SPEED = Vec2(100, 0);
 
 MapLayer::MapLayer() :
-_tiledMap(nullptr)
+_tiledMap(nullptr),
+_player(nullptr)
 {
 }
 
@@ -29,9 +30,6 @@ bool MapLayer::init()
     {
         return false;
     }
-    
-    auto bg = LayerColor::create(Color4B::BLUE);
-    this->addChild(bg);
     
     auto map = TMXTiledMap::create("map/stage0.tmx");
     this->addChild(map);
@@ -59,9 +57,6 @@ bool MapLayer::init()
         }
     }
     
-    auto body = PhysicsBody::create();
-    this->setPhysicsBody(body);
-    
     return true;
 }
 
@@ -75,7 +70,7 @@ void MapLayer::onEnter()
 
 void MapLayer::update(float dt)
 {
-    //this->setPosition(this->getPosition() - SCROLL_SPEED * dt);
+    _tiledMap->setPosition(_tiledMap->getPosition() - SCROLL_SPEED * dt);
     //auto point = this->convertToNodeSpace(Vec2(100, 0));
     //_player->setPosition(Vec2(point.x, _player->getPosition().y));
 }
