@@ -41,28 +41,10 @@ bool MapLayer::init()
     for (int x = 0; x < mapSize.width; ++x) {
         for (int y = 0; y < mapSize.height; ++y) {
             auto coordinate = Vec2(x, y);
-            log("%d %d", x, y);
-            auto sprite = terrainLayer->getTileAt(coordinate);
-            if (sprite) {
-                auto physicsBody = PhysicsBody::createBox(sprite->getContentSize());
-                physicsBody->setGravityEnable(false);
-                physicsBody->setCategoryBitmask((int)TileType::WALL);
-                physicsBody->setContactTestBitmask((int)TileType::PLAYER);
-                physicsBody->setCollisionBitmask((int)TileType::PLAYER);
-                sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-                sprite->setPhysicsBody(physicsBody);
-            }
             
-            auto object = objectLayer->getTileAt(coordinate);
-            if (object) {
-                auto physicsBody = PhysicsBody::createCircle(object->getContentSize().width / 2.0);
-                physicsBody->setGravityEnable(false);
-                physicsBody->setCategoryBitmask((int)TileType::ITEM);
-                physicsBody->setCollisionBitmask(0);
-                physicsBody->setContactTestBitmask((int)TileType::PLAYER);
-                object->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-                object->setPhysicsBody(physicsBody);
-            }
+            this->addPhysicsBody(terrainLayer, coordinate);
+            this->addPhysicsBody(objectLayer, coordinate);
+            
         }
     }
     
@@ -100,4 +82,26 @@ void MapLayer::update(float dt)
     //_tiledMap->setPosition(_tiledMap->getPosition() - SCROLL_SPEED * dt);
     //auto point = this->convertToNodeSpace(Vec2(100, 0));
     //_player->setPosition(Vec2(point.x, _player->getPosition().y));
+}
+
+Sprite* MapLayer::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinate)
+{
+    auto sprite = layer->getTileAt(coordinate);
+    if (sprite) {
+        auto gid = layer->getTileGIDAt(coordinate);
+        auto properties = _tiledMap->getPropertiesForGID(gid).asValueMap();
+        auto category = properties.at("category").asInt();
+        
+        log("category = %d", category);
+        
+        auto physicsBody = PhysicsBody::createBox(sprite->getContentSize());
+        physicsBody->setGravityEnable(false);
+        physicsBody->setCategoryBitmask(category);
+        physicsBody->setContactTestBitmask((int)TileType::PLAYER);
+        physicsBody->setCollisionBitmask((int)TileType::PLAYER);
+        sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+        sprite->setPhysicsBody(physicsBody);
+        return sprite;
+    }
+    return nullptr;
 }

@@ -20,21 +20,24 @@ CC_CONSTRUCTOR_ACCESS:
     MapLayer();
     virtual ~MapLayer();
     
+private:
+    cocos2d::Sprite* addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2& coordinate);
+    
 public:
     
     enum class TileType {
-        WALL = 1 << 0,
-        PLAYER = 1 << 1,
-        ENEMY = 1 << 2,
-        ITEM = 1 << 3
+        WALL = 1 << 0,  // 0
+        PLAYER = 1 << 1, // 1
+        ENEMY = 1 << 2, // 2
+        COIN = 1 << 3 // 4
     };
 
     void update(float dt) override;
     void onEnter() override;
 
-    CREATE_FUNC(MapLayer);
     CC_SYNTHESIZE_RETAIN(Player *, _player, Player);
     CC_SYNTHESIZE_RETAIN(cocos2d::TMXTiledMap *, _tiledMap, TiledMap);
+    CREATE_FUNC(MapLayer);
 };
 
 #endif /* defined(__KawazJet__MapLayer__) */
