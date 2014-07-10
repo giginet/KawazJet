@@ -26,6 +26,7 @@ public:
     void onEnter() override;
 
     CREATE_FUNC(MapLayer);
+    CC_SYNTHESIZE_RETAIN(Player *, _player, Player);
     CC_SYNTHESIZE_RETAIN(cocos2d::TMXTiledMap *, _tiledMap, TiledMap);
 };
 

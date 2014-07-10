@@ -10,14 +10,18 @@
 
 USING_NS_CC;
 
+const Vec2 SCROLL_SPEED = Vec2(100, 0);
+
 MapLayer::MapLayer() :
-_tiledMap(nullptr)
+_tiledMap(nullptr),
+_player(nullptr)
 {
 }
 
 MapLayer::~MapLayer()
 {
     CC_SAFE_RELEASE_NULL(_tiledMap);
+    CC_SAFE_RELEASE_NULL(_player);
 }
 
 bool MapLayer::init()
@@ -47,6 +51,17 @@ bool MapLayer::init()
         }
     }
     
+    auto winSize = Director::getInstance()->getWinSize();
+    
+    // Playerの生成
+    auto player = Player::create();
+    player->setPosition(Vec2(100, 160));
+    this->addChild(player);
+    this->setPlayer(player);
+    
+    this->runAction(Follow::create(player, Rect(0, 0, _tiledMap->getContentSize().width, winSize.height)));
+    
+    
     return true;
 }
 
@@ -60,6 +75,7 @@ void MapLayer::onEnter()
 
 void MapLayer::update(float dt)
 {
+    _player->setPosition(_player->getPosition() + SCROLL_SPEED * dt);
     //_tiledMap->setPosition(_tiledMap->getPosition() - SCROLL_SPEED * dt);
     //auto point = this->convertToNodeSpace(Vec2(100, 0));
     //_player->setPosition(Vec2(point.x, _player->getPosition().y));
