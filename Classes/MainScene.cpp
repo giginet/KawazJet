@@ -75,6 +75,29 @@ bool MainScene::init()
     parallaxNode->addChild(background, 0, Vec2((backgroundWidth - winSize.width) / (mapWidth - winSize.width), 0), Vec2::ZERO);
     this->setParallaxNode(parallaxNode);
     
+    auto contactListener = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin = [this](PhysicsContact& contact) {
+        
+        auto otherShape = contact.getShapeA()->getBody() == _map->getPlayer()->getPhysicsBody() ? contact.getShapeB() : contact.getShapeA();
+        auto body = otherShape->getBody();
+        
+        auto category = body->getCategoryBitmask();
+        
+        if (category & (int)MapLayer::TileType::ENEMY) {
+            // ゲームオーバー
+            auto explosition = ParticleExplosion::create();
+            explosition->setPosition(_map->getPlayer()->getPosition());
+            _map->getPlayer()->removeFromParent();
+            _map->addChild(explosition);
+        } else if (category & (int)MapLayer::TileType::COIN) {
+            // コイン
+            body->getNode()->removeFromParent(); // コイン消す
+        }
+        
+        return true;
+    };
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+    
     this->addChild(layer);
     
     return true;

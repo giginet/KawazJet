@@ -50,26 +50,6 @@ bool MapLayer::init()
     
     auto winSize = Director::getInstance()->getWinSize();
     
-    auto listener = EventListenerPhysicsContact::create();
-    listener->onContactBegin = [this](PhysicsContact& contact) {
-        
-        auto otherShape = contact.getShapeA()->getBody() == _player->getPhysicsBody() ? contact.getShapeB() : contact.getShapeA();
-        auto body = otherShape->getBody();
-        
-        auto category = body->getCategoryBitmask();
-        
-        if ((category & (int)TileType::ENEMY) || (category & (int)TileType::WALL)) {
-            // ゲームオーバー
-            log("gameover");
-        } else if (category & (int)TileType::COIN) {
-            // コイン
-            log("coin");
-        }
-        
-        return true;
-    };
-    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-    
     // Playerの生成
     auto player = Player::create();
     player->setPosition(Vec2(100, 160));
@@ -86,7 +66,6 @@ void MapLayer::onEnter()
     Layer::onEnter();
     // updateを毎フレーム実行
     this->scheduleUpdate();
-    
 }
 
 void MapLayer::update(float dt)
@@ -107,8 +86,11 @@ Sprite* MapLayer::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordi
         physicsBody->setCategoryBitmask(category);
         physicsBody->setContactTestBitmask((int)TileType::PLAYER);
         physicsBody->setCollisionBitmask((int)TileType::PLAYER);
+        physicsBody->setDynamic(false);
+        
         sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         sprite->setPhysicsBody(physicsBody);
+        
         return sprite;
     }
     return nullptr;
