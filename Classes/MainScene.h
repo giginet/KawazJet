@@ -23,6 +23,8 @@ public:
     
     CC_SYNTHESIZE(bool, _isPress, IsPress);
     CC_SYNTHESIZE_RETAIN(MapLayer *, _map, Map);
+    CC_SYNTHESIZE_RETAIN(Player *, _player, Player);
+    CC_SYNTHESIZE_RETAIN(cocos2d::ParallaxNode *, _parallaxNode, ParallaxNode);
     CREATE_FUNC(MainScene);
     
 CC_CONSTRUCTOR_ACCESS:

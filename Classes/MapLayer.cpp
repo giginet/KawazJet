@@ -10,17 +10,13 @@
 
 USING_NS_CC;
 
-const Vec2 SCROLL_SPEED = Vec2(100, 0);
-
 MapLayer::MapLayer() :
-_tiledMap(nullptr),
-_player(nullptr)
+_tiledMap(nullptr)
 {
 }
 
 MapLayer::~MapLayer()
 {
-    CC_SAFE_RELEASE_NULL(_player);
     CC_SAFE_RELEASE_NULL(_tiledMap);
 }
 
@@ -34,12 +30,6 @@ bool MapLayer::init()
     auto map = TMXTiledMap::create("map/stage0.tmx");
     this->addChild(map);
     this->setTiledMap(map);
-    
-    // Playerの生成
-    auto player = Player::create();
-    player->setPosition(Vec2(100, 160));
-    this->addChild(player);
-    this->setPlayer(player);
     
     auto terrainLayer = map->getLayer("Terrain");
     
@@ -70,7 +60,7 @@ void MapLayer::onEnter()
 
 void MapLayer::update(float dt)
 {
-    _tiledMap->setPosition(_tiledMap->getPosition() - SCROLL_SPEED * dt);
+    //_tiledMap->setPosition(_tiledMap->getPosition() - SCROLL_SPEED * dt);
     //auto point = this->convertToNodeSpace(Vec2(100, 0));
     //_player->setPosition(Vec2(point.x, _player->getPosition().y));
 }

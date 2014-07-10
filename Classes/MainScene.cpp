@@ -12,6 +12,7 @@ USING_NS_CC;
 
 const Vec2 GRAVITY_ACCELERATION = Vec2(0, -3);
 const Vec2 IMPULSE_ACCELERATION = Vec2(0, 180);
+const Vec2 SCROLL_SPEED = Vec2(100, 0);
 
 Scene* MainScene::createScene()
 {
@@ -42,9 +43,7 @@ bool MainScene::init()
         return false;
     }
     
-    auto layer = MapLayer::create();
-    this->addChild(layer);
-    this->setMap(layer);
+    auto winSize = Director::getInstance()->getWinSize();
     
     // タッチしたときに浮遊する処理を追加
     auto listener = EventListenerTouchOneByOne::create();
@@ -62,18 +61,44 @@ bool MainScene::init()
     
     this->scheduleUpdate();
     
+    auto background = Sprite::create("background.png");
+    background->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+    
+    auto parallaxNode = ParallaxNode::create();
+    this->addChild(parallaxNode);
+    
+    auto layer = MapLayer::create();
+    this->setMap(layer);
+    
+    auto mapWidth = layer->getTiledMap()->getContentSize().width;
+    auto backgroundWidth = background->getContentSize().width;
+    
+    parallaxNode->addChild(background, 0, Vec2((backgroundWidth - winSize.width) / (mapWidth - winSize.width), 0), Vec2::ZERO);
+    parallaxNode->addChild(layer, 0, Vec2(1, 0), Vec2::ZERO);
+    this->setParallaxNode(parallaxNode);
+    
+    // Playerの生成
+    auto player = Player::create();
+    player->setPosition(Vec2(100, 160));
+    this->addChild(player);
+    this->setPlayer(player);
+    
     return true;
 }
 
 MainScene::MainScene() :
 _isPress(false),
-_map(nullptr)
+_map(nullptr),
+_player(nullptr),
+_parallaxNode(nullptr)
 {
 }
 
 MainScene::~MainScene()
 {
     CC_SAFE_RELEASE_NULL(_map);
+    CC_SAFE_RELEASE_NULL(_player);
+    CC_SAFE_RELEASE_NULL(_parallaxNode);
 }
 
 void MainScene::onEnterTransitionDidFinish()
@@ -83,7 +108,15 @@ void MainScene::onEnterTransitionDidFinish()
 
 void MainScene::update(float dt)
 {
+    auto winSize = Director::getInstance()->getWinSize();
+    auto currentOffset = _parallaxNode->getPosition();
+    auto limit = -(_map->getTiledMap()->getContentSize().width - winSize.width);
+    if (currentOffset.x > limit) {
+        _parallaxNode->setPosition(currentOffset - SCROLL_SPEED * dt);
+    } else {
+        _parallaxNode->setPosition(Vec2(limit, currentOffset.y));
+    }
     if (this->getIsPress()) {
-        _map->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
+        getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
     }
 }

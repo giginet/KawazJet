@@ -8,7 +8,7 @@
  </tileset>
  <layer name="Terrain" width="117" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt1MEJACAMBMHYf9OWIIJRPGYgXz+bOKpqNA5/0zSPpnluNF29aY/O6m7q/u/rbOpff0PTPJqyQ9NMmmbSFEgwAd2TAFw=
+   eJzt08EJADAIxVC7/9LFq/RWUQh54AI/GNHnPE6zuje36T6b8tTNfxvYdJ9/ymNTHpvy2JTHzXlsymNTHpvy2JQnm15iiQA3
   </data>
  </layer>
  <layer name="Object" width="117" height="13">
