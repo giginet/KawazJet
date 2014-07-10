@@ -26,6 +26,7 @@ public:
     CREATE_FUNC(MainScene);
     
 CC_CONSTRUCTOR_ACCESS:
+    float rotate;
     MainScene();
     virtual ~MainScene();
     bool init() override;
