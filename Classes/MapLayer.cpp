@@ -10,8 +10,6 @@
 
 USING_NS_CC;
 
-const Vec2 SCROLL_SPEED = Vec2(100, 0);
-
 MapLayer::MapLayer() :
 _tiledMap(nullptr),
 _player(nullptr)
@@ -62,6 +60,7 @@ bool MapLayer::init()
     this->runAction(Follow::create(player, Rect(0, 0, _tiledMap->getContentSize().width, winSize.height)));
     
     
+    
     return true;
 }
 
@@ -75,7 +74,7 @@ void MapLayer::onEnter()
 
 void MapLayer::update(float dt)
 {
-    _player->setPosition(_player->getPosition() + SCROLL_SPEED * dt);
+    _player->setPosition(_player->getPosition() + _player->getVelocity() * dt);
     //_tiledMap->setPosition(_tiledMap->getPosition() - SCROLL_SPEED * dt);
     //auto point = this->convertToNodeSpace(Vec2(100, 0));
     //_player->setPosition(Vec2(point.x, _player->getPosition().y));

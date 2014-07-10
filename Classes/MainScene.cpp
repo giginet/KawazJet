@@ -100,7 +100,7 @@ void MainScene::onEnterTransitionDidFinish()
 
 void MainScene::update(float dt)
 {
-    _parallaxNode->setPosition(_parallaxNode->getPosition() - Vec2(50, 0) * dt);
+    _parallaxNode->setPosition(_parallaxNode->getPosition() - _map->getPlayer()->getVelocity() * dt);
     if (this->getIsPress()) {
         _map->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
     }

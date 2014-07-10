@@ -15,6 +15,7 @@
 class Player :public cocos2d::Sprite
 {
 public:
+    CC_SYNTHESIZE_PASS_BY_REF(cocos2d::Vec2, _velocity, Velocity);
     CREATE_FUNC(Player);
     
 CC_CONSTRUCTOR_ACCESS:

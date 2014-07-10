@@ -20,5 +20,7 @@ bool Player::init()
     body->setRotationEnable(false);
     this->setPhysicsBody(body);
     
+    _velocity = Vec2(100, 0);
+    
     return true;
 }
