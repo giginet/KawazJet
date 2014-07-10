@@ -7,6 +7,7 @@
 //
 
 #include "Player.h"
+#include "MapLayer.h"
 
 USING_NS_CC;
 
@@ -18,6 +19,8 @@ bool Player::init()
     
     auto body = PhysicsBody::createBox(this->getContentSize());
     body->setRotationEnable(false);
+    body->setCategoryBitmask((int)MapLayer::TileType::PLAYER);
+    body->setContactTestBitmask(INT_MAX);
     this->setPhysicsBody(body);
     
     _velocity = Vec2(100, 0);

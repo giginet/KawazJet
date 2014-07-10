@@ -34,22 +34,46 @@ bool MapLayer::init()
     this->setTiledMap(map);
     
     auto terrainLayer = map->getLayer("Terrain");
+    auto objectLayer = map->getLayer("Object");
     
     // マップのサイズ
     auto mapSize = map->getMapSize();
     for (int x = 0; x < mapSize.width; ++x) {
         for (int y = 0; y < mapSize.height; ++y) {
-            auto sprite = terrainLayer->getTileAt(Vec2(x, y));
+            auto coordinate = Vec2(x, y);
+            log("%d %d", x, y);
+            auto sprite = terrainLayer->getTileAt(coordinate);
             if (sprite) {
                 auto physicsBody = PhysicsBody::createBox(sprite->getContentSize());
                 physicsBody->setGravityEnable(false);
+                physicsBody->setCategoryBitmask((int)TileType::WALL);
+                physicsBody->setContactTestBitmask((int)TileType::PLAYER);
+                physicsBody->setCollisionBitmask((int)TileType::PLAYER);
                 sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
                 sprite->setPhysicsBody(physicsBody);
+            }
+            
+            auto object = objectLayer->getTileAt(coordinate);
+            if (object) {
+                auto physicsBody = PhysicsBody::createCircle(object->getContentSize().width / 2.0);
+                physicsBody->setGravityEnable(false);
+                physicsBody->setCategoryBitmask((int)TileType::ITEM);
+                physicsBody->setCollisionBitmask(0);
+                physicsBody->setContactTestBitmask((int)TileType::PLAYER);
+                object->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+                object->setPhysicsBody(physicsBody);
             }
         }
     }
     
     auto winSize = Director::getInstance()->getWinSize();
+    
+    auto listener = EventListenerPhysicsContact::create();
+    listener->onContactBegin = [](PhysicsContact& contact) {
+        log("hit");
+        return true;
+    };
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
     // Playerの生成
     auto player = Player::create();
@@ -58,8 +82,6 @@ bool MapLayer::init()
     this->setPlayer(player);
     
     this->runAction(Follow::create(player, Rect(0, 0, _tiledMap->getContentSize().width, winSize.height)));
-    
-    
     
     return true;
 }

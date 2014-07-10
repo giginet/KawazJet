@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="117" height="13" tilewidth="48" tileheight="48">
- <tileset firstgid="1" name="Terrein" tilewidth="48" tileheight="48">
-  <image source="block.png" width="48" height="48"/>
- </tileset>
- <tileset firstgid="2" name="Object" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="Object" tilewidth="48" tileheight="48">
   <image source="objects.png" width="96" height="48"/>
+ </tileset>
+ <tileset firstgid="3" name="Terrain" tilewidth="48" tileheight="48">
+  <image source="block.png" width="48" height="48"/>
  </tileset>
  <layer name="Terrain" width="117" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt08EJADAIxVC7/9LFq/RWUQh54AI/GNHnPE6zuje36T6b8tTNfxvYdJ9/ymNTHpvy2JTHzXlsymNTHpvy2JQnm15iiQA3
+   eJzt1LEKACAUAsAH/v8/tzY0BoXcgbsgOAPAb/K6ANdlC13s2semXfxvpxwCANBqAWtWADE=
   </data>
  </layer>
  <layer name="Object" width="117" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt1UEKACAIBEDB//+5c5Fht4IZkESPshQBMMuiP814Wy5vd8e7Mnr5dNd/VFnMTfGH6j+VUwAA4MYAGJgAQw==
+   eJzt1UkKACAIQNHy/odubwNqVov+g8gmCEwqBQB6MoktY8853XCOqH4174mt+Ue+Ud1E8xutc+Sa5UsWa5Zz+q2Qz3t26s2zj/8UAIA76usLAPhSA0CBAHg=
   </data>
  </layer>
 </map>

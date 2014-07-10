@@ -21,6 +21,13 @@ CC_CONSTRUCTOR_ACCESS:
     virtual ~MapLayer();
     
 public:
+    
+    enum class TileType {
+        WALL = 1 << 0,
+        PLAYER = 1 << 1,
+        ENEMY = 1 << 2,
+        ITEM = 1 << 3
+    };
 
     void update(float dt) override;
     void onEnter() override;
