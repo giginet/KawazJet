@@ -12,6 +12,7 @@
 		07A07C00196CE7AA00545BE5 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 07A07BFF196CE7AA00545BE5 /* images */; };
 		07A07C03196CEC2C00545BE5 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A07C01196CEC2C00545BE5 /* Player.cpp */; };
 		07A07C05196D02AA00545BE5 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 07A07C04196D02AA00545BE5 /* map */; };
+		07A07C14196ED71500545BE5 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 07A07C13196ED71500545BE5 /* fonts */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -226,6 +227,7 @@
 		07A07C01196CEC2C00545BE5 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../Classes/Player.cpp; sourceTree = "<group>"; };
 		07A07C02196CEC2C00545BE5 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../Classes/Player.h; sourceTree = "<group>"; };
 		07A07C04196D02AA00545BE5 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; path = map; sourceTree = "<group>"; };
+		07A07C13196ED71500545BE5 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				07A07C13196ED71500545BE5 /* fonts */,
 				07A07C04196D02AA00545BE5 /* map */,
 				07A07BFF196CE7AA00545BE5 /* images */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
@@ -654,6 +657,7 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				07A07C05196D02AA00545BE5 /* map in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
+				07A07C14196ED71500545BE5 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,

@@ -92,6 +92,7 @@ bool MainScene::init()
         } else if (category & (int)MapLayer::TileType::COIN) {
             // コイン
             body->getNode()->removeFromParent(); // コイン消す
+            _coin += 1;
         }
         
         return true;
@@ -100,13 +101,21 @@ bool MainScene::init()
     
     this->addChild(layer);
     
+    auto label = Label::createWithTTF(StringUtils::toString(_coin), "fonts/Marker Felt.ttf", 24);
+    this->addChild(label);
+    label->setPosition(Vec2(100, winSize.height - 30));
+    label->enableShadow();
+    this->setCoinLabel(label);
+    
     return true;
 }
 
 MainScene::MainScene() :
 _isPress(false),
+_coin(0),
 _map(nullptr),
-_parallaxNode(nullptr)
+_parallaxNode(nullptr),
+_coinLabel(nullptr)
 {
 }
 
@@ -114,6 +123,7 @@ MainScene::~MainScene()
 {
     CC_SAFE_RELEASE_NULL(_map);
     CC_SAFE_RELEASE_NULL(_parallaxNode);
+    CC_SAFE_RELEASE_NULL(_coinLabel);
 }
 
 void MainScene::onEnterTransitionDidFinish()
@@ -123,7 +133,8 @@ void MainScene::onEnterTransitionDidFinish()
 
 void MainScene::update(float dt)
 {
-    _parallaxNode->setPosition(_parallaxNode->getPosition() - _map->getPlayer()->getVelocity() * dt);
+    _parallaxNode->setPosition(_map->getPlayer()->getPosition() * -1);
+    this->getCoinLabel()->setString(StringUtils::toString(_coin));
     if (this->getIsPress()) {
         _map->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
     }

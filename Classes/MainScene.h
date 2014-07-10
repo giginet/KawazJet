@@ -22,7 +22,9 @@ public:
     void onEnterTransitionDidFinish() override;
     
     CC_SYNTHESIZE(bool, _isPress, IsPress);
+    CC_SYNTHESIZE(int, _coin, Coin);
     CC_SYNTHESIZE_RETAIN(MapLayer *, _map, Map);
+    CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _coinLabel, CoinLabel);
     CC_SYNTHESIZE_RETAIN(cocos2d::ParallaxNode *, _parallaxNode, ParallaxNode);
     CREATE_FUNC(MainScene);
     
