@@ -26,10 +26,10 @@ private:
 public:
     
     enum class TileType {
-        WALL = 1 << 0,  // 0
-        PLAYER = 1 << 1, // 1
-        ENEMY = 1 << 2, // 2
-        COIN = 1 << 3 // 4
+        WALL = 1 << 0,  // 1
+        PLAYER = 1 << 1, // 2
+        ENEMY = 1 << 2, // 4
+        COIN = 1 << 3 // 8
     };
 
     void update(float dt) override;

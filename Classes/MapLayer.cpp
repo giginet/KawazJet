@@ -51,8 +51,21 @@ bool MapLayer::init()
     auto winSize = Director::getInstance()->getWinSize();
     
     auto listener = EventListenerPhysicsContact::create();
-    listener->onContactBegin = [](PhysicsContact& contact) {
-        log("hit");
+    listener->onContactBegin = [this](PhysicsContact& contact) {
+        
+        auto otherShape = contact.getShapeA()->getBody() == _player->getPhysicsBody() ? contact.getShapeB() : contact.getShapeA();
+        auto body = otherShape->getBody();
+        
+        auto category = body->getCategoryBitmask();
+        
+        if ((category & (int)TileType::ENEMY) || (category & (int)TileType::WALL)) {
+            // ゲームオーバー
+            log("gameover");
+        } else if (category & (int)TileType::COIN) {
+            // コイン
+            log("coin");
+        }
+        
         return true;
     };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
@@ -79,9 +92,6 @@ void MapLayer::onEnter()
 void MapLayer::update(float dt)
 {
     _player->setPosition(_player->getPosition() + _player->getVelocity() * dt);
-    //_tiledMap->setPosition(_tiledMap->getPosition() - SCROLL_SPEED * dt);
-    //auto point = this->convertToNodeSpace(Vec2(100, 0));
-    //_player->setPosition(Vec2(point.x, _player->getPosition().y));
 }
 
 Sprite* MapLayer::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinate)
@@ -91,8 +101,6 @@ Sprite* MapLayer::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordi
         auto gid = layer->getTileGIDAt(coordinate);
         auto properties = _tiledMap->getPropertiesForGID(gid).asValueMap();
         auto category = properties.at("category").asInt();
-        
-        log("category = %d", category);
         
         auto physicsBody = PhysicsBody::createBox(sprite->getContentSize());
         physicsBody->setGravityEnable(false);

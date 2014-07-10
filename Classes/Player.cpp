@@ -20,6 +20,7 @@ bool Player::init()
     auto body = PhysicsBody::createBox(this->getContentSize());
     body->setRotationEnable(false);
     body->setCategoryBitmask((int)MapLayer::TileType::PLAYER);
+    body->setCollisionBitmask((int)MapLayer::TileType::WALL);
     body->setContactTestBitmask(INT_MAX);
     this->setPhysicsBody(body);
     

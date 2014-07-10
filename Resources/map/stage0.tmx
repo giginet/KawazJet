@@ -4,12 +4,12 @@
   <image source="objects.png" width="96" height="48"/>
   <tile id="0">
    <properties>
-    <property name="category" value="2"/>
+    <property name="category" value="4"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="category" value="4"/>
+    <property name="category" value="8"/>
    </properties>
   </tile>
  </tileset>
@@ -17,13 +17,13 @@
   <image source="block.png" width="48" height="48"/>
   <tile id="0">
    <properties>
-    <property name="category" value="0"/>
+    <property name="category" value="1"/>
    </properties>
   </tile>
  </tileset>
  <layer name="Terrain" width="117" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt1LEKACAUAsAH/v8/tzY0BoXcgbsgOAPAb/K6ANdlC13s2semXfxvpxwCANBqAWtWADE=
+   eJzt1DEKACAMA8BC//9nVwdHpRLuIHshpFUA/KanD+C63kIWvebRaRb/N1MfAsywP4D3FnuaADQ=
   </data>
  </layer>
  <layer name="Object" width="117" height="13">
