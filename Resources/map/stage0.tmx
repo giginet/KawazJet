@@ -23,12 +23,12 @@
  </tileset>
  <layer name="Terrain" width="117" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt1DEKACAMA8BC//9nVwdHpRLuIHshpFUA/KanD+C63kIWvebRaRb/N1MfAsywP4D3FnuaADQ=
+   eJztmEEKACAIBIP+/+e+kOnGZjPQUbAdD+IYoGAmnmOvcJ4DTn3BaT9w6kf2PzdyqMobp/v1anAaw91pZd6/OM2ingXy1lI525E6nL4BTvuBo37g1IPMbVexYy7yxwGr
   </data>
  </layer>
  <layer name="Object" width="117" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt1UkKACAIQNHy/odubwNqVov+g8gmCEwqBQB6MoktY8853XCOqH4174mt+Ue+Ud1E8xutc+Sa5UsWa5Zz+q2Qz3t26s2zj/8UAIA76usLAPhSA0CBAHg=
+   eJztltEKwCAIRav//+g9NgRTK8XqHogZU4IOupUCdlODzmlB54Du1PvOMzltTKzZW+roiuJlp5wXzrkUa/1786pTbX9aPWr73JMVp5k8WeB8cbOS5lvropGcjv6hTnf6j2f6VsrL+D2t5Ek51entrPQpyA167j7gtDOaTbPvdtVY8r2dYobHA6fACuf0Awc6ALE=
   </data>
  </layer>
 </map>

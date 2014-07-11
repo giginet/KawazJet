@@ -183,8 +183,8 @@ void MainScene::onClear()
     this->setState(State::CLEAR);
     _map->getPlayer()->setVelocity(Vec2::ZERO);
     auto clearLabel = Label::createWithSystemFont("Clear!", "Helvetica", 64);
-    this->addChild(clearLabel);
     clearLabel->setPosition(Vec2(winSize.width / 2.0, winSize.height + 50));
+    this->addChild(clearLabel);
     
     auto label = Label::createWithSystemFont("もう一度", "Helvetica", 32);
     auto menuItem = MenuItemLabel::create(label, [](Ref *sender) {

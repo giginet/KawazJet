@@ -24,7 +24,7 @@ bool Player::init()
     body->setContactTestBitmask(INT_MAX);
     this->setPhysicsBody(body);
     
-    _velocity = Vec2(100, 0);
+    _velocity = Vec2(200, 0);
     
     return true;
 }
