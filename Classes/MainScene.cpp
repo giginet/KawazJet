@@ -44,20 +44,6 @@ bool MainScene::init()
     
     auto winSize = Director::getInstance()->getWinSize();
     
-    // タッチしたときに浮遊する処理を追加
-    auto listener = EventListenerTouchOneByOne::create();
-    listener->onTouchBegan = [this](Touch *touch, Event *event) {
-        this->setIsPress(true);
-        return true;
-    };
-    listener->onTouchEnded = [this](Touch *touch, Event *event) {
-        this->setIsPress(false);
-    };
-    listener->onTouchCancelled = [this](Touch *touch, Event *event) {
-        this->setIsPress(false);
-    };
-    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-    
     this->scheduleUpdate();
     
     auto background = Sprite::create("background.png");
@@ -106,6 +92,20 @@ bool MainScene::init()
     label->setPosition(Vec2(100, winSize.height - 30));
     label->enableShadow();
     this->setCoinLabel(label);
+    
+    // タッチしたときに浮遊する処理を追加
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->onTouchBegan = [this](Touch *touch, Event *event) {
+        this->setIsPress(true);
+        return true;
+    };
+    listener->onTouchEnded = [this](Touch *touch, Event *event) {
+        this->setIsPress(false);
+    };
+    listener->onTouchCancelled = [this](Touch *touch, Event *event) {
+        this->setIsPress(false);
+    };
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
     return true;
 }
@@ -181,12 +181,15 @@ void MainScene::onClear()
     auto winSize = Director::getInstance()->getWinSize();
     
     this->setState(State::CLEAR);
+    this->getEventDispatcher()->removeAllEventListeners();
+    
     _map->getPlayer()->setVelocity(Vec2::ZERO);
     auto clearLabel = Label::createWithSystemFont("Clear!", "Helvetica", 64);
-    clearLabel->setPosition(Vec2(winSize.width / 2.0, winSize.height + 50));
+    clearLabel->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0 + 50));
     this->addChild(clearLabel);
+    clearLabel->setColor(Color3B::RED);
     
-    auto label = Label::createWithSystemFont("もう一度", "Helvetica", 32);
+    auto label = Label::createWithSystemFont("次のステージへ", "Helvetica", 32);
     auto menuItem = MenuItemLabel::create(label, [](Ref *sender) {
         auto scene = MainScene::createScene();
         auto transition = TransitionFade::create(1.0, scene);

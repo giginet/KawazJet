@@ -70,6 +70,8 @@ void MapLayer::onEnter()
 
 void MapLayer::update(float dt)
 {
+    //auto velocity = _player->getPhysicsBody()->getVelocity();
+    //_player->getPhysicsBody()->setVelocity(Vec2(_player->getVelocity().x * dt, velocity.y));
     _player->setPosition(_player->getPosition() + _player->getVelocity() * dt);
 }
 

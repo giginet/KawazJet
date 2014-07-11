@@ -17,7 +17,7 @@ bool Player::init()
         return false;
     }
     
-    auto body = PhysicsBody::createBox(this->getContentSize());
+    auto body = PhysicsBody::createCircle(this->getContentSize().width / 2.0);
     body->setRotationEnable(false);
     body->setCategoryBitmask((int)MapLayer::TileType::PLAYER);
     body->setCollisionBitmask((int)MapLayer::TileType::WALL);
