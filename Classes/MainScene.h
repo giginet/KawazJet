@@ -17,12 +17,20 @@ class MainScene :public cocos2d::Layer
 {
 public:
     
+    enum class State {
+        READY,
+        MAIN,
+        CLEAR,
+        GAMEOVER
+    };
+    
     static cocos2d::Scene* createScene();
     
     void onEnterTransitionDidFinish() override;
     
     CC_SYNTHESIZE(bool, _isPress, IsPress);
     CC_SYNTHESIZE(int, _coin, Coin);
+    CC_SYNTHESIZE(State, _state, State);
     CC_SYNTHESIZE_RETAIN(MapLayer *, _map, Map);
     CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _coinLabel, CoinLabel);
     CC_SYNTHESIZE_RETAIN(cocos2d::ParallaxNode *, _parallaxNode, ParallaxNode);
@@ -33,6 +41,10 @@ CC_CONSTRUCTOR_ACCESS:
     virtual ~MainScene();
     bool init() override;
     void update(float dt) override;
+    
+private:
+    void onGameOver();
+    void onClear();
 };
 
 #endif /* defined(__KawazJet__MainScene__) */
