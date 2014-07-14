@@ -24,7 +24,7 @@ Scene* MainScene::createScene()
     // 重力を設定する
     world->setGravity(GRAVITY_ACCELERATION);
     
-    world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    //world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     
     // スピードを設定する
     world->setSpeed(6.0f);
