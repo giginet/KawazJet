@@ -77,6 +77,8 @@ void MapLayer::update(float dt)
 
 Sprite* MapLayer::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinate)
 {
+    auto tileSize = _tiledMap->getTileSize() / 2.0;
+    
     auto sprite = layer->getTileAt(coordinate);
     if (sprite) {
         auto gid = layer->getTileGIDAt(coordinate);
@@ -89,6 +91,24 @@ Sprite* MapLayer::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordi
         physicsBody->setContactTestBitmask((int)TileType::PLAYER);
         physicsBody->setCollisionBitmask((int)TileType::PLAYER);
         physicsBody->setDynamic(false);
+        
+        // アニメーションを付ける
+        if (!properties["animation"].isNull()) {
+            auto animationSprite = properties["animation"].asString();
+            auto animationCount = properties["animationCount"].asInt();
+        
+            sprite->removeFromParent();
+            this->addChild(sprite);
+            
+            Vector<SpriteFrame *> frames;
+            for (int i = 0; i < animationCount; ++i) {
+                auto frame = SpriteFrame::create(animationSprite, Rect(tileSize.width * i, 0, tileSize.width, tileSize.height));
+                frames.pushBack(frame);
+            }
+            auto animation = Animation::createWithSpriteFrames(frames);
+            animation->setDelayPerUnit(0.15);
+            sprite->runAction(RepeatForever::create(Animate::create(animation)));
+        }
         
         sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         sprite->setPhysicsBody(physicsBody);

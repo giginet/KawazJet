@@ -4,6 +4,8 @@
   <image source="objects.png" width="240" height="48"/>
   <tile id="0">
    <properties>
+    <property name="animation" value="hazard.png"/>
+    <property name="animationCount" value="2"/>
     <property name="category" value="4"/>
    </properties>
   </tile>

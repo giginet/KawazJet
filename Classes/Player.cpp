@@ -26,6 +26,7 @@ bool Player::init()
         frames.pushBack(frame);
     }
     auto animation = Animation::createWithSpriteFrames(frames);
+    animation->setDelayPerUnit(0.05);
     this->runAction(RepeatForever::create(Animate::create(animation)));
     
     auto body = PhysicsBody::createCircle(this->getContentSize().width / 2.0);
