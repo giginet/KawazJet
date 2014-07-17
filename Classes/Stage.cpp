@@ -33,7 +33,9 @@ bool Stage::init()
     this->addChild(map);
     this->setTiledMap(map);
     
+    // 地形レイヤーを取得する
     auto terrainLayer = map->getLayer("Terrain");
+    // オブジェクトレイヤーを取得する
     auto objectLayer = map->getLayer("Object");
     
     // マップのサイズ
@@ -58,14 +60,9 @@ bool Stage::init()
     
     this->runAction(Follow::create(player, Rect(0, 0, _tiledMap->getContentSize().width, winSize.height)));
     
-    return true;
-}
-
-void Stage::onEnter()
-{
-    Layer::onEnter();
-    // updateを毎フレーム実行
     this->scheduleUpdate();
+    
+    return true;
 }
 
 void Stage::update(float dt)
@@ -77,22 +74,32 @@ void Stage::update(float dt)
 
 Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinate)
 {
+    // タイル1枚の大きさを取り出す
     auto tileSize = _tiledMap->getTileSize() / 2.0;
     
+    // タイルのスプライトを取り出す
     auto sprite = layer->getTileAt(coordinate);
     if (sprite) {
+        // タイルのIDを取り出す
         auto gid = layer->getTileGIDAt(coordinate);
+        // タイルのプロパティをmapで取り出す
         auto properties = _tiledMap->getPropertiesForGID(gid).asValueMap();
+        // プロパティの中からcategoryの値をintとして取り出す
         auto category = properties.at("category").asInt();
         
+        // 剛体を設置する
         auto physicsBody = PhysicsBody::createBox(sprite->getContentSize());
-        physicsBody->setGravityEnable(false);
-        physicsBody->setCategoryBitmask(category);
-        physicsBody->setContactTestBitmask((int)TileType::PLAYER);
-        physicsBody->setCollisionBitmask((int)TileType::PLAYER);
+        // 剛体を固定する
         physicsBody->setDynamic(false);
+        // 剛体にカテゴリをセットする
+        physicsBody->setCategoryBitmask(category);
+        // 剛体と当たり判定を取るカテゴリを指定する
+        physicsBody->setContactTestBitmask((int)TileType::PLAYER);
+        // 剛体と衝突判定を取るカテゴリを指定する
+        physicsBody->setCollisionBitmask((int)TileType::PLAYER);
         
         // アニメーションを付ける
+        // プロパティにanimationの値があったら
         if (!properties["animation"].isNull()) {
             auto animationSprite = properties["animation"].asString();
             auto animationCount = properties["animationCount"].asInt();
@@ -110,7 +117,6 @@ Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinat
             sprite->runAction(RepeatForever::create(Animate::create(animation)));
         }
         
-        sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         sprite->setPhysicsBody(physicsBody);
         
         return sprite;

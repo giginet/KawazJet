@@ -14,15 +14,6 @@
 
 class Stage :public cocos2d::Layer
 {
-CC_CONSTRUCTOR_ACCESS:
-    bool init() override;
-    
-    Stage();
-    virtual ~Stage();
-    
-private:
-    cocos2d::Sprite* addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2& coordinate);
-    
 public:
     
     enum class TileType {
@@ -31,13 +22,26 @@ public:
         ENEMY = 1 << 2, // 4
         COIN = 1 << 3 // 8
     };
+    
+    bool init() override;
+    
+    Stage();
+    virtual ~Stage();
 
     void update(float dt) override;
-    void onEnter() override;
 
     CC_SYNTHESIZE_RETAIN(Player *, _player, Player);
     CC_SYNTHESIZE_RETAIN(cocos2d::TMXTiledMap *, _tiledMap, TiledMap);
     CREATE_FUNC(Stage);
+private:
+    /** 指定のレイヤーの特定位置のタイルに剛体を設置します
+     *  指定座標にタイルがなかった場合はnullptrを返します
+     *  @param layer 対象のレイヤー
+     *  @param coordinate 対象タイルのあるマップ上の座標
+     *  @return タイルのスプライト、またはnullptr
+     */
+    cocos2d::Sprite* addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2& coordinate);
+    
 };
 
 #endif /* defined(__KawazJet__Stage__) */
