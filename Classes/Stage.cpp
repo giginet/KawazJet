@@ -1,28 +1,28 @@
 //
-//  MapLayer.cpp
+//  Stage.cpp
 //  KawazJet
 //
 //  Created by giginet on 7/9/14.
 //
 //
 
-#include "MapLayer.h"
+#include "Stage.h"
 
 USING_NS_CC;
 
-MapLayer::MapLayer() :
+Stage::Stage() :
 _tiledMap(nullptr),
 _player(nullptr)
 {
 }
 
-MapLayer::~MapLayer()
+Stage::~Stage()
 {
     CC_SAFE_RELEASE_NULL(_tiledMap);
     CC_SAFE_RELEASE_NULL(_player);
 }
 
-bool MapLayer::init()
+bool Stage::init()
 {
     if (!Layer::init())
     {
@@ -61,21 +61,21 @@ bool MapLayer::init()
     return true;
 }
 
-void MapLayer::onEnter()
+void Stage::onEnter()
 {
     Layer::onEnter();
     // updateを毎フレーム実行
     this->scheduleUpdate();
 }
 
-void MapLayer::update(float dt)
+void Stage::update(float dt)
 {
     //auto velocity = _player->getPhysicsBody()->getVelocity();
     //_player->getPhysicsBody()->setVelocity(Vec2(_player->getVelocity().x * dt, velocity.y));
     _player->setPosition(_player->getPosition() + _player->getVelocity() * dt);
 }
 
-Sprite* MapLayer::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinate)
+Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinate)
 {
     auto tileSize = _tiledMap->getTileSize() / 2.0;
     

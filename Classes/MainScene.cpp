@@ -52,8 +52,8 @@ bool MainScene::init()
     auto parallaxNode = ParallaxNode::create();
     this->addChild(parallaxNode);
     
-    auto layer = MapLayer::create();
-    this->setMap(layer);
+    auto layer = Stage::create();
+    this->setStage(layer);
     
     auto mapWidth = layer->getTiledMap()->getContentSize().width;
     auto backgroundWidth = background->getContentSize().width;
@@ -64,18 +64,18 @@ bool MainScene::init()
     auto contactListener = EventListenerPhysicsContact::create();
     contactListener->onContactBegin = [this](PhysicsContact& contact) {
         
-        auto otherShape = contact.getShapeA()->getBody() == _map->getPlayer()->getPhysicsBody() ? contact.getShapeB() : contact.getShapeA();
+        auto otherShape = contact.getShapeA()->getBody() == _stage->getPlayer()->getPhysicsBody() ? contact.getShapeB() : contact.getShapeA();
         auto body = otherShape->getBody();
         
         auto category = body->getCategoryBitmask();
         
-        if (category & (int)MapLayer::TileType::ENEMY) {
+        if (category & (int)Stage::TileType::ENEMY) {
             // ゲームオーバー
             auto explosition = ParticleExplosion::create();
-            explosition->setPosition(_map->getPlayer()->getPosition());
-            _map->addChild(explosition);
+            explosition->setPosition(_stage->getPlayer()->getPosition());
+            _stage->addChild(explosition);
             this->onGameOver();
-        } else if (category & (int)MapLayer::TileType::COIN) {
+        } else if (category & (int)Stage::TileType::COIN) {
             // コイン
             body->getNode()->removeFromParent(); // コイン消す
             _coin += 1;
@@ -114,7 +114,7 @@ MainScene::MainScene() :
 _isPress(false),
 _coin(0),
 _state(State::MAIN),
-_map(nullptr),
+_stage(nullptr),
 _parallaxNode(nullptr),
 _coinLabel(nullptr)
 {
@@ -122,7 +122,7 @@ _coinLabel(nullptr)
 
 MainScene::~MainScene()
 {
-    CC_SAFE_RELEASE_NULL(_map);
+    CC_SAFE_RELEASE_NULL(_stage);
     CC_SAFE_RELEASE_NULL(_parallaxNode);
     CC_SAFE_RELEASE_NULL(_coinLabel);
 }
@@ -134,16 +134,16 @@ void MainScene::onEnterTransitionDidFinish()
 
 void MainScene::update(float dt)
 {
-    _parallaxNode->setPosition(_map->getPlayer()->getPosition() * -1);
+    _parallaxNode->setPosition(_stage->getPlayer()->getPosition() * -1);
     
-    if (_map->getPlayer()->getPosition().x >= _map->getTiledMap()->getContentSize().width) {
+    if (_stage->getPlayer()->getPosition().x >= _stage->getTiledMap()->getContentSize().width) {
         if (_state == State::MAIN) {
             this->onClear();
         }
     }
     
     auto winSize = Director::getInstance()->getWinSize();
-    auto position = _map->getPlayer()->getPosition();
+    auto position = _stage->getPlayer()->getPosition();
     const auto margin = 50;
     if (position.y < -margin || position.y >= winSize.height + margin) {
         if (this->getState() == State::MAIN) {
@@ -153,7 +153,7 @@ void MainScene::update(float dt)
     
     this->getCoinLabel()->setString(StringUtils::toString(_coin));
     if (this->getIsPress()) {
-        _map->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
+        _stage->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
     }
 }
 
@@ -161,7 +161,7 @@ void MainScene::onGameOver()
 {
     
     this->setState(State::GAMEOVER);
-    _map->getPlayer()->removeFromParent();
+    _stage->getPlayer()->removeFromParent();
     
     auto winSize = Director::getInstance()->getWinSize();
     auto label = Label::createWithSystemFont("もう一度", "Helvetica", 32);
@@ -183,7 +183,7 @@ void MainScene::onClear()
     this->setState(State::CLEAR);
     this->getEventDispatcher()->removeAllEventListeners();
     
-    _map->getPlayer()->setVelocity(Vec2::ZERO);
+    _stage->getPlayer()->setVelocity(Vec2::ZERO);
     auto clearLabel = Label::createWithSystemFont("Clear!", "Helvetica", 64);
     clearLabel->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0 + 50));
     this->addChild(clearLabel);

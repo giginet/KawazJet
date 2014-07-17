@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include "cocos2d.h"
-#include "MapLayer.h"
+#include "Stage.h"
 
 class MainScene :public cocos2d::Layer
 {
@@ -31,7 +31,7 @@ public:
     CC_SYNTHESIZE(bool, _isPress, IsPress);
     CC_SYNTHESIZE(int, _coin, Coin);
     CC_SYNTHESIZE(State, _state, State);
-    CC_SYNTHESIZE_RETAIN(MapLayer *, _map, Map);
+    CC_SYNTHESIZE_RETAIN(Stage *, _stage, Stage);
     CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _coinLabel, CoinLabel);
     CC_SYNTHESIZE_RETAIN(cocos2d::ParallaxNode *, _parallaxNode, ParallaxNode);
     CREATE_FUNC(MainScene);

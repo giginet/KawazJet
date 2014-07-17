@@ -7,7 +7,7 @@
 //
 
 #include "Player.h"
-#include "MapLayer.h"
+#include "Stage.h"
 
 const int WIDTH = 35;
 const int HEIGHT = 45;
@@ -31,8 +31,8 @@ bool Player::init()
     
     auto body = PhysicsBody::createCircle(this->getContentSize().width / 2.0);
     body->setRotationEnable(false);
-    body->setCategoryBitmask((int)MapLayer::TileType::PLAYER);
-    body->setCollisionBitmask((int)MapLayer::TileType::WALL);
+    body->setCategoryBitmask((int)Stage::TileType::PLAYER);
+    body->setCollisionBitmask((int)Stage::TileType::WALL);
     body->setContactTestBitmask(INT_MAX);
     this->setPhysicsBody(body);
     
