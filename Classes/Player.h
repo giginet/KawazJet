@@ -9,7 +9,6 @@
 #ifndef __KawazJet__Player__
 #define __KawazJet__Player__
 
-#include <iostream>
 #include "cocos2d.h"
 
 class Player :public cocos2d::Sprite

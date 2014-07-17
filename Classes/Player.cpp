@@ -9,21 +9,34 @@
 #include "Player.h"
 #include "Stage.h"
 
-const int WIDTH = 35;
-const int HEIGHT = 45;
-const int ACCELERATION_LIMIT = 40;
-
 USING_NS_CC;
+
+/// アニメーションが何フレームあるか
+const int FRAME_COUNT = 4;
+/// 横方向の加速度の最大値
+const int ACCELERATION_LIMIT = 40;
+/// 初期ジェット加速度
+const Vec2 INITIAL_ACCELERATION = Vec2(200, 0);
 
 bool Player::init()
 {
-    if (!Sprite::initWithFile("player.png", Rect(0, 0, WIDTH, HEIGHT))) {
+    if (!Sprite::initWithFile("player.png")) {
         return false;
     }
     
+    // 1フレームの画像サイズを取得する
+    auto frameSize = Size(this->getContentSize().width / FRAME_COUNT,
+                          this->getContentSize().height);
+    // テクスチャの大きさを1フレーム分にする
+    this->setTextureRect(Rect(0, 0, frameSize.width, frameSize.height));
+    
     Vector<SpriteFrame *> frames;
-    for (int i = 0; i < 4; ++i) {
-        auto frame = SpriteFrame::create("player.png", Rect(WIDTH * i, 0, WIDTH, HEIGHT));
+    for (int i = 0; i < FRAME_COUNT; ++i) {
+        // 1コマずつアニメーションを作成する
+        auto frame = SpriteFrame::create("player.png", Rect(frameSize.width * i,
+                                                            0,
+                                                            frameSize.width,
+                                                            frameSize.height));
         frames.pushBack(frame);
     }
     auto animation = Animation::createWithSpriteFrames(frames);
@@ -31,13 +44,15 @@ bool Player::init()
     this->runAction(RepeatForever::create(Animate::create(animation)));
     
     auto body = PhysicsBody::createCircle(this->getContentSize().width / 2.0);
+    // 剛体の回転を無効にする
     body->setRotationEnable(false);
     body->setCategoryBitmask((int)Stage::TileType::PLAYER);
     body->setCollisionBitmask((int)Stage::TileType::WALL);
     body->setContactTestBitmask(INT_MAX);
     this->setPhysicsBody(body);
     
-    _acceleration = Vec2(200, 0);
+    // 初期加速度を設定する
+    _acceleration = INITIAL_ACCELERATION;
     
     this->scheduleUpdate();
     
