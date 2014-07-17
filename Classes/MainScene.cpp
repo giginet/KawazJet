@@ -183,7 +183,7 @@ void MainScene::onClear()
     this->setState(State::CLEAR);
     this->getEventDispatcher()->removeAllEventListeners();
     
-    _stage->getPlayer()->setVelocity(Vec2::ZERO);
+    _stage->getPlayer()->getPhysicsBody()->setEnable(false);
     auto clearLabel = Label::createWithSystemFont("Clear!", "Helvetica", 64);
     clearLabel->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0 + 50));
     this->addChild(clearLabel);

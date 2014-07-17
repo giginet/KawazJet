@@ -67,9 +67,6 @@ bool Stage::init()
 
 void Stage::update(float dt)
 {
-    //auto velocity = _player->getPhysicsBody()->getVelocity();
-    //_player->getPhysicsBody()->setVelocity(Vec2(_player->getVelocity().x * dt, velocity.y));
-    _player->setPosition(_player->getPosition() + _player->getVelocity() * dt);
 }
 
 Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinate)
@@ -87,8 +84,12 @@ Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinat
         // プロパティの中からcategoryの値をintとして取り出す
         auto category = properties.at("category").asInt();
         
+        auto material = PhysicsMaterial();
+        material.friction = 0;
+        material.restitution = 0.5;
+        
         // 剛体を設置する
-        auto physicsBody = PhysicsBody::createBox(sprite->getContentSize());
+        auto physicsBody = PhysicsBody::createBox(sprite->getContentSize(), material);
         // 剛体を固定する
         physicsBody->setDynamic(false);
         // 剛体にカテゴリをセットする

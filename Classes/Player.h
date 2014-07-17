@@ -17,7 +17,9 @@ class Player :public cocos2d::Sprite
 public:
     bool init() override;
     
-    CC_SYNTHESIZE_PASS_BY_REF(cocos2d::Vec2, _velocity, Velocity);
+    void update(float dt) override;
+    
+    CC_SYNTHESIZE_PASS_BY_REF(cocos2d::Vec2, _acceleration, Acceleration);
     CREATE_FUNC(Player);
 };
 

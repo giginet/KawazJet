@@ -11,6 +11,7 @@
 
 const int WIDTH = 35;
 const int HEIGHT = 45;
+const int ACCELERATION_LIMIT = 40;
 
 USING_NS_CC;
 
@@ -36,7 +37,19 @@ bool Player::init()
     body->setContactTestBitmask(INT_MAX);
     this->setPhysicsBody(body);
     
-    _velocity = Vec2(200, 0);
+    _acceleration = Vec2(200, 0);
+    
+    this->scheduleUpdate();
     
     return true;
+}
+
+void Player::update(float dt)
+{
+    this->getPhysicsBody()->applyImpulse(_acceleration);
+    auto v = this->getPhysicsBody()->getVelocity();
+    if (v.x > ACCELERATION_LIMIT) {
+        v.x = ACCELERATION_LIMIT;
+        this->getPhysicsBody()->setVelocity(v);
+    }
 }
