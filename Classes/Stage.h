@@ -30,8 +30,8 @@ public:
 
     void update(float dt) override;
 
-    CC_SYNTHESIZE_RETAIN(Player *, _player, Player);
     CC_SYNTHESIZE_RETAIN(cocos2d::TMXTiledMap *, _tiledMap, TiledMap);
+    CC_SYNTHESIZE_RETAIN(Player *, _player, Player);
     CREATE_FUNC(Stage);
 private:
     /** 指定のレイヤーの特定位置のタイルに剛体を設置します

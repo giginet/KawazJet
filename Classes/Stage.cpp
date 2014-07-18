@@ -50,16 +50,18 @@ bool Stage::init()
         }
     }
     
-    auto winSize = Director::getInstance()->getWinSize();
-    
     // Playerの生成
     auto player = Player::create();
     player->setPosition(Vec2(100, 160));
     this->addChild(player);
     this->setPlayer(player);
     
-    this->runAction(Follow::create(player, Rect(0, 0, _tiledMap->getContentSize().width, winSize.height)));
-    
+    // Playerの移動に画面を追従させる
+    this->runAction(Follow::create(player, Rect(0,
+                                                0,
+                                                _tiledMap->getContentSize().width,
+                                                _tiledMap->getContentSize().height)));
+
     this->scheduleUpdate();
     
     return true;

@@ -61,7 +61,9 @@ bool Player::init()
 
 void Player::update(float dt)
 {
+    // 毎フレームかわずたんに推進力を与える
     this->getPhysicsBody()->applyImpulse(_acceleration);
+    // 横方向の加速度がACCELERATION_LIMIT以上になったら越えないようにする
     auto v = this->getPhysicsBody()->getVelocity();
     if (v.x > ACCELERATION_LIMIT) {
         v.x = ACCELERATION_LIMIT;

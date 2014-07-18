@@ -28,11 +28,17 @@ public:
     
     void onEnterTransitionDidFinish() override;
     
+    /// 画面がタップされているかどうか
     CC_SYNTHESIZE(bool, _isPress, IsPress);
+    /// 現在の取得コイン数
     CC_SYNTHESIZE(int, _coin, Coin);
+    /// 現在のゲーム状態
     CC_SYNTHESIZE(State, _state, State);
+    /// ステージ
     CC_SYNTHESIZE_RETAIN(Stage *, _stage, Stage);
+    /// コイン枚数表示用のラベル
     CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _coinLabel, CoinLabel);
+    /// 背景用ParallaxNode
     CC_SYNTHESIZE_RETAIN(cocos2d::ParallaxNode *, _parallaxNode, ParallaxNode);
     CREATE_FUNC(MainScene);
     

@@ -24,8 +24,9 @@ Scene* MainScene::createScene()
     // 重力を設定する
     world->setGravity(GRAVITY_ACCELERATION);
     
-    //world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-    
+//#if COCOS2D_DEBUG > 1
+    world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+//#endif
     // スピードを設定する
     world->setSpeed(6.0f);
     
@@ -93,7 +94,7 @@ bool MainScene::init()
     label->enableShadow();
     this->setCoinLabel(label);
     
-    // タッチしたときに浮遊する処理を追加
+    // タッチしたときにタッチされているフラグをオンにする
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = [this](Touch *touch, Event *event) {
         this->setIsPress(true);
@@ -134,6 +135,7 @@ void MainScene::onEnterTransitionDidFinish()
 
 void MainScene::update(float dt)
 {
+    // 背景をプレイヤーの位置によって動かす
     _parallaxNode->setPosition(_stage->getPlayer()->getPosition() * -1);
     
     if (_stage->getPlayer()->getPosition().x >= _stage->getTiledMap()->getContentSize().width) {
@@ -152,7 +154,10 @@ void MainScene::update(float dt)
     }
     
     this->getCoinLabel()->setString(StringUtils::toString(_coin));
+    
+    // 画面がタップされている間
     if (this->getIsPress()) {
+        // プレイヤーに上方向の推進力を与える
         _stage->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
     }
 }
