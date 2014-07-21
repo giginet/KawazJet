@@ -24,9 +24,9 @@ Scene* MainScene::createScene()
     // 重力を設定する
     world->setGravity(GRAVITY_ACCELERATION);
     
-//#if COCOS2D_DEBUG > 1
+    //#if COCOS2D_DEBUG > 1
     world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-//#endif
+    //#endif
     // スピードを設定する
     world->setSpeed(6.0f);
     
@@ -62,6 +62,7 @@ bool MainScene::init()
     parallaxNode->addChild(background, 0, Vec2((backgroundWidth - winSize.width) / mapWidth, 0), Vec2::ZERO);
     this->setParallaxNode(parallaxNode);
     
+    // 物体が衝突したことを検知するEventListener
     auto contactListener = EventListenerPhysicsContact::create();
     contactListener->onContactBegin = [this](PhysicsContact& contact) {
         
@@ -107,6 +108,18 @@ bool MainScene::init()
         this->setIsPress(false);
     };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    
+    /*for (int i = 0; i < 10; ++i) {
+        auto gear = Sprite3D::create("model/gear.obj");
+        gear->setScale(0.8 * i);
+        gear->setRotation3D(Vec3(rand() % 90 -180, 0, rand() % 90 -180));
+        auto rotate = RotateBy::create(10.0, Vec3(0, 360, 0));
+        gear->runAction(RepeatForever::create(rotate));
+        parallaxNode->addChild(gear, 2, Vec2(0.2, 0), Vec2(i * 200, 0));
+    }*/
+    auto gear = Sprite3D::create("model/gear2.obj");
+    gear->setScale(10);
+    parallaxNode->addChild(gear, 2, Vec2(0.2, 0), Vec2(mapWidth / 2.0, 80));
     
     return true;
 }
