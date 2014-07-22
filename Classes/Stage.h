@@ -16,11 +16,18 @@ class Stage :public cocos2d::Layer
 {
 public:
     
+    /// タイルの種類
     enum class TileType {
-        WALL = 1 << 0,  // 1
-        PLAYER = 1 << 1, // 2
-        ENEMY = 1 << 2, // 4
-        COIN = 1 << 3 // 8
+        /// 壁
+        WALL = 1 << 0,
+        /// プレイヤー
+        PLAYER = 1 << 1,
+        /// 敵キャラ
+        ENEMY = 1 << 2,
+        /// コイン
+        COIN = 1 << 3,
+        /// 収集アイテム
+        ITEN = 1 << 4
     };
     
     bool init() override;

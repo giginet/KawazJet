@@ -29,6 +29,7 @@ bool Stage::init()
         return false;
     }
     
+    auto winSize = Director::getInstance()->getWinSize();
     auto map = TMXTiledMap::create("map/stage0.tmx");
     this->addChild(map);
     this->setTiledMap(map);
@@ -52,7 +53,7 @@ bool Stage::init()
     
     // Playerの生成
     auto player = Player::create();
-    player->setPosition(Vec2(100, 160));
+    player->setPosition(Vec2(100, winSize.height / 2.0));
     this->addChild(player);
     this->setPlayer(player);
     
@@ -74,7 +75,7 @@ void Stage::update(float dt)
 Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinate)
 {
     // タイル1枚の大きさを取り出す
-    auto tileSize = _tiledMap->getTileSize() / 2.0;
+    auto tileSize = _tiledMap->getTileSize();
     
     // タイルのスプライトを取り出す
     auto sprite = layer->getTileAt(coordinate);
@@ -96,10 +97,10 @@ Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinat
         physicsBody->setDynamic(false);
         // 剛体にカテゴリをセットする
         physicsBody->setCategoryBitmask(category);
-        // 剛体と当たり判定を取るカテゴリを指定する
-        physicsBody->setContactTestBitmask((int)TileType::PLAYER);
-        // 剛体と衝突判定を取るカテゴリを指定する
-        physicsBody->setCollisionBitmask((int)TileType::PLAYER);
+        // 剛体と接触判定を取るカテゴリを指定する
+        physicsBody->setContactTestBitmask(static_cast<int>(TileType::PLAYER));
+        // 剛体と衝突を取るカテゴリを指定する
+        physicsBody->setCollisionBitmask(static_cast<int>(TileType::PLAYER));
         
         // アニメーションを付ける
         // プロパティにanimationの値があったら
