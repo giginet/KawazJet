@@ -11,8 +11,8 @@
 
 USING_NS_CC;
 
-const Vec2 GRAVITY_ACCELERATION = Vec2(0, -5);
-const Vec2 IMPULSE_ACCELERATION = Vec2(0, 500);
+const Vec2 GRAVITY_ACCELERATION = Vec2(0, -10);
+const Vec2 IMPULSE_ACCELERATION = Vec2(0, 1000);
 
 Scene* MainScene::createScene()
 {
