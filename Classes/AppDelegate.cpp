@@ -40,28 +40,28 @@ bool AppDelegate::applicationDidFinishLaunching() {
         if (frameSize.height > 320.f) {
             // Retinaディスプレイのとき
             // 高解像度画像を有効にする
-            director->setContentScaleFactor(2.0f);
+            director->setContentScaleFactor(1.0f);
             if (frameSize.width == 1136) {
                 // iPhone 4inchのとき
                 // 4インチ対応の画面サイズに変更する
-                glview->setDesignResolutionSize(568, 320, ResolutionPolicy::NO_BORDER);
+                glview->setDesignResolutionSize(568 * 2, 320 * 2, ResolutionPolicy::NO_BORDER);
                 // Resources/4inchフォルダに画像ファイルがあれば、最優先で利用する
                 //searchResolutionOrder.push_back("images/4inch");
             } else {
                 // Retina 3.5インチのとき
-                glview->setDesignResolutionSize(480, 320, ResolutionPolicy::NO_BORDER);
+                glview->setDesignResolutionSize(480 * 2, 320 * 2, ResolutionPolicy::NO_BORDER);
             }
-            searchResolutionOrder.push_back("images/retina");
         } else { // non-Retina 3.5インチ
-            glview->setDesignResolutionSize(480, 320, ResolutionPolicy::NO_BORDER);
+            glview->setDesignResolutionSize(480 * 2, 320 * 2, ResolutionPolicy::NO_BORDER);
         }
     } else if (platform == Platform::OS_ANDROID) {
         // Android端末のとき
-        glview->setDesignResolutionSize(480, 320, ResolutionPolicy::NO_BORDER);
+        glview->setDesignResolutionSize(480 * 2, 320 * 2, ResolutionPolicy::NO_BORDER);
         fu->addSearchPath("music/ogg");
         fu->addSearchPath("se/ogg");
     }
-    searchResolutionOrder.push_back("images/nonretina");
+    searchResolutionOrder.push_back("images/retina");
+    //searchResolutionOrder.push_back("images/nonretina");
     // 画像の読み込み順を設定する
     FileUtils::getInstance()->setSearchResolutionsOrder(searchResolutionOrder);
     

@@ -11,8 +11,8 @@
 
 USING_NS_CC;
 
-const Vec2 GRAVITY_ACCELERATION = Vec2(0, -3);
-const Vec2 IMPULSE_ACCELERATION = Vec2(0, 180);
+const Vec2 GRAVITY_ACCELERATION = Vec2(0, -5);
+const Vec2 IMPULSE_ACCELERATION = Vec2(0, 500);
 
 Scene* MainScene::createScene()
 {
@@ -72,7 +72,7 @@ bool MainScene::init()
         
         auto category = body->getCategoryBitmask();
         
-        if (category & (int)Stage::TileType::ENEMY) {
+        if (category & static_cast<int>(Stage::TileType::ENEMY)) {
             // ゲームオーバー
             auto explosition = ParticleExplosion::create();
             explosition->setPosition(_stage->getPlayer()->getPosition());
@@ -91,9 +91,9 @@ bool MainScene::init()
     
     this->addChild(layer);
     
-    auto label = Label::createWithTTF(StringUtils::toString(_coin), "fonts/Marker Felt.ttf", 24);
+    auto label = Label::createWithTTF(StringUtils::toString(_coin), "fonts/Marker Felt.ttf", 48);
     this->addChild(label);
-    label->setPosition(Vec2(100, winSize.height - 30));
+    label->setPosition(Vec2(200, winSize.height - 60));
     label->enableShadow();
     this->setCoinLabel(label);
     
@@ -112,16 +112,19 @@ bool MainScene::init()
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
     for (int i = 0; i < 10; ++i) {
+        auto wrapper = Node::create();
         auto gear = Sprite3D::create("model/gear.obj");
-        gear->setScale((rand() % 25) / 10.f);
-        gear->setRotation3D(Vec3(0, 0, rand() % 90 - 45));
-        auto rotate = RotateBy::create(10.0, Vec3(0, 360, 0));
+        gear->setScale((rand() % 20) / 10.f);
+        wrapper->setRotation3D(Vec3(rand() % 45, 0, rand() % 90 - 45));
+        auto rotate = RotateBy::create(rand() % 30, Vec3(0, 360, 0));
         gear->runAction(RepeatForever::create(rotate));
-        parallaxNode->addChild(gear, 2, Vec2(0.2, 0), Vec2(i * 200, 150));
+        wrapper->addChild(gear);
+        parallaxNode->addChild(wrapper, 2, Vec2(0.2, 0), Vec2(i * 200, 160));
     }
+    
     auto ground = Sprite3D::create("model/ground.obj");
-    ground->setScale(10);
-    parallaxNode->addChild(ground, 2, Vec2(0.2, 0), Vec2(mapWidth / 2.0, 80));
+    ground->setScale(15);
+    parallaxNode->addChild(ground, 2, Vec2(0.5, 0), Vec2(mapWidth / 2.0, 80));
     
     return true;
 }
@@ -162,7 +165,7 @@ void MainScene::update(float dt)
     
     auto winSize = Director::getInstance()->getWinSize();
     auto position = _stage->getPlayer()->getPosition();
-    const auto margin = 50;
+    const auto margin = 100;
     if (position.y < -margin || position.y >= winSize.height + margin) {
         if (this->getState() == State::MAIN) {
             this->onGameOver();
@@ -185,7 +188,7 @@ void MainScene::onGameOver()
     _stage->getPlayer()->removeFromParent();
     
     auto winSize = Director::getInstance()->getWinSize();
-    auto label = Label::createWithSystemFont("もう一度", "Helvetica", 32);
+    auto label = Label::createWithSystemFont("もう一度", "Helvetica", 64);
     auto menuItem = MenuItemLabel::create(label, [](Ref *sender) {
         auto scene = MainScene::createScene();
         auto transition = TransitionFade::create(1.0, scene);
@@ -206,12 +209,12 @@ void MainScene::onClear()
     this->getEventDispatcher()->removeAllEventListeners();
     
     _stage->getPlayer()->getPhysicsBody()->setEnable(false);
-    auto clearLabel = Label::createWithSystemFont("Clear!", "Helvetica", 64);
-    clearLabel->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0 + 50));
+    auto clearLabel = Label::createWithSystemFont("Clear!", "Helvetica", 128);
+    clearLabel->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0 + 100));
     this->addChild(clearLabel);
     clearLabel->setColor(Color3B::RED);
     
-    auto label = Label::createWithSystemFont("次のステージへ", "Helvetica", 32);
+    auto label = Label::createWithSystemFont("次のステージへ", "Helvetica", 64);
     auto menuItem = MenuItemLabel::create(label, [](Ref *sender) {
         auto scene = MainScene::createScene();
         auto transition = TransitionFade::create(1.0, scene);
