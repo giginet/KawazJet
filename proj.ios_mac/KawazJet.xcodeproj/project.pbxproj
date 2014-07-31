@@ -700,7 +700,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "touch -cm ${SRCROOT}/../Resources/*";
+			shellScript = "touch -cm ${SRCROOT}/../Resources/*\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

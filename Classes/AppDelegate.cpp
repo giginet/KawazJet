@@ -42,7 +42,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
                 // 4インチ対応の画面サイズに変更する
                 glview->setDesignResolutionSize(568, 320, ResolutionPolicy::NO_BORDER);
                 // Resources/4inchフォルダに画像ファイルがあれば、最優先で利用する
-                searchResolutionOrder.push_back("images/4inch");
+                //searchResolutionOrder.push_back("images/4inch");
             } else {
                 // Retina 3.5インチのとき
                 glview->setDesignResolutionSize(480, 320, ResolutionPolicy::NO_BORDER);
