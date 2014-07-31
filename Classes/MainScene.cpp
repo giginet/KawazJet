@@ -7,6 +7,7 @@
 //
 
 #include "MainScene.h"
+#include "AudioUtils.h"
 
 USING_NS_CC;
 
@@ -80,6 +81,7 @@ bool MainScene::init()
         } else if (category & (int)Stage::TileType::COIN) {
             // コイン
             body->getNode()->removeFromParent(); // コイン消す
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("coin").c_str());
             _coin += 1;
         }
         
@@ -144,6 +146,7 @@ MainScene::~MainScene()
 void MainScene::onEnterTransitionDidFinish()
 {
     Layer::onEnterTransitionDidFinish();
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(AudioUtils::getFileName("main").c_str());
 }
 
 void MainScene::update(float dt)
@@ -191,7 +194,8 @@ void MainScene::onGameOver()
     auto menu = Menu::create(menuItem, nullptr);
     this->addChild(menu);
     menu->setPosition(winSize.width / 2.0, winSize.height / 2.0);
-    
+    CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("explode").c_str());
 }
 
 void MainScene::onClear()
@@ -216,4 +220,6 @@ void MainScene::onClear()
     auto menu = Menu::create(menuItem, nullptr);
     this->addChild(menu);
     menu->setPosition(winSize.width / 2.0, winSize.height / 2.0);
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(AudioUtils::getFileName("clear").c_str());
 }

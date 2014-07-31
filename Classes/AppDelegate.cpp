@@ -26,6 +26,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
     
+    auto fu = FileUtils::getInstance();
+    
     // 画像リソースを振り分ける
     // 画像リソースを検索する順番を定義する配列
     std::vector<std::string> searchResolutionOrder;
@@ -33,6 +35,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto frameSize = glview->getFrameSize(); // 現在の端末の画面サイズ
     
     if (platform == Platform::OS_IPHONE) { // もし、iPhoneなら
+        fu->addSearchPath("music/caf");
+        fu->addSearchPath("se/caf");
         if (frameSize.height > 320.f) {
             // Retinaディスプレイのとき
             // 高解像度画像を有効にする
@@ -54,11 +58,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     } else if (platform == Platform::OS_ANDROID) {
         // Android端末のとき
         glview->setDesignResolutionSize(480, 320, ResolutionPolicy::NO_BORDER);
+        fu->addSearchPath("music/ogg");
+        fu->addSearchPath("se/ogg");
     }
     searchResolutionOrder.push_back("images/nonretina");
     // 画像の読み込み順を設定する
     FileUtils::getInstance()->setSearchResolutionsOrder(searchResolutionOrder);
-
+    
     // create a scene. it's an autorelease object
     auto scene = MainScene::createScene();
 

@@ -121,6 +121,7 @@ Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinat
         }
         
         sprite->setPhysicsBody(physicsBody);
+        sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
         
         return sprite;
     }
