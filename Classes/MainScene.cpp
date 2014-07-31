@@ -71,6 +71,7 @@ bool MainScene::init()
         auto body = otherShape->getBody();
         
         auto category = body->getCategoryBitmask();
+        auto layer = dynamic_cast<TMXLayer *>(body->getNode()->getParent());
         
         if (category & static_cast<int>(Stage::TileType::ENEMY)) {
             // ゲームオーバー
@@ -80,9 +81,13 @@ bool MainScene::init()
             this->onGameOver();
         } else if (category & (int)Stage::TileType::COIN) {
             // コイン
-            body->getNode()->removeFromParent(); // コイン消す
+            layer->removeChild(body->getNode(), true);
             CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("coin").c_str());
             _coin += 1;
+        } else if (category & static_cast<int>(Stage::TileType::ITEN)) {
+            // アイテム
+            layer->removeChild(body->getNode(), true);
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("food").c_str());
         }
         
         return true;

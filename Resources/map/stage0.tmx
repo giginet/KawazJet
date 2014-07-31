@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="117" height="13" tilewidth="48" tileheight="48">
  <tileset firstgid="1" name="Object" tilewidth="48" tileheight="48">
-  <image source="objects.png" width="480" height="48"/>
+  <image source="object.png" width="240" height="48"/>
   <tile id="0">
    <properties>
     <property name="animation" value="hazard.png"/>
@@ -16,7 +16,7 @@
   </tile>
   <tile id="2">
    <properties>
-    <property name="category" value="8"/>
+    <property name="category" value="16"/>
    </properties>
   </tile>
   <tile id="3">
