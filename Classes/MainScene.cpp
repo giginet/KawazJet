@@ -12,7 +12,7 @@
 USING_NS_CC;
 
 /// ステージ数
-const int STAGE_COUNT = 2;
+const int STAGE_COUNT = 5;
 const Vec2 GRAVITY_ACCELERATION = Vec2(0, -10);
 const Vec2 IMPULSE_ACCELERATION = Vec2(0, 1400);
 

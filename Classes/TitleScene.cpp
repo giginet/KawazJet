@@ -41,7 +41,7 @@ bool TitleScene::init()
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = [](Touch* touch, Event* event) {
         
-        auto main = MainScene::createSceneWithStage(0);
+        auto main = MainScene::createSceneWithStage(1);
         auto transition = TransitionCrossFade::create(0.5, main);
         
         Director::getInstance()->replaceScene(transition);

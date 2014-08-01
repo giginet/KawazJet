@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="150" height="13" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" source="object.tsx"/>
+ <tileset firstgid="6" source="terrain.tsx"/>
+ <layer name="Terrain" width="150" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztmcsKxCAMRV256HQ6w/z/x9ZNoYgmRqPJlHvgQsH4oJ7SFt8hhK9ytpTIJO9Dob0+ZG5eKZ/iTo5RGjMS9VSbB65nweu4s9Y3ArzigVdyLLzK7wHV5gHpvrXWr/KK+ya5h+rT0nYBr3j+3SsL4BUPvJIDr/TR9EqjRvIe7E3OiFe1ceEVvIJX+njzygIPXtXqng68KlPz6lepLV1TdV6w3DePzrQww6uWfj1tVsz6H1w91kqOoHMmJMH6/EqaaDy35fw92VNOCwkXAQ==
+  </data>
+ </layer>
+ <layer name="Object" width="150" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztl9kOgCAMBEH9/2/2lRCDhR5syk7S+GIqx7hKKRhcgyJnUZvqab24Bb1QPfqaG1Jfr/FF9Z9lNnO0XqHvv1ffnV5J8sKaLN+y071CI8qrv3dGu+70CguEvKrdVdPDmkivRmciq4oi4rmSNZXc82gHssBpOWMFQl4hQ6/WoFdj6NUaHl5l2ovIufD/iniQySuiJ1M+E2LBC1uDASw=
+  </data>
+ </layer>
+</map>
