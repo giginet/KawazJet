@@ -10,9 +10,10 @@
 
 USING_NS_CC;
 
-Stage::Stage() :
-_tiledMap(nullptr),
-_player(nullptr)
+Stage::Stage()
+: _stageNumber(0)
+, _tiledMap(nullptr)
+, _player(nullptr)
 {
 }
 
@@ -22,15 +23,30 @@ Stage::~Stage()
     CC_SAFE_RELEASE_NULL(_player);
 }
 
-bool Stage::init()
+Stage * Stage::createWithStage(int stageNumber)
+{
+    Stage *ret = new Stage();
+    if (ret->initWithStage(stageNumber))
+    {
+        ret->autorelease();
+        return ret;
+    }
+    CC_SAFE_DELETE(ret);
+    return nullptr;
+}
+
+bool Stage::initWithStage(int stageNumber)
 {
     if (!Layer::init())
     {
         return false;
     }
     
+    // 現在のステージ番号をセット
+    _stageNumber = stageNumber;
+    
     auto winSize = Director::getInstance()->getWinSize();
-    auto map = TMXTiledMap::create("map/stage0.tmx");
+    auto map = TMXTiledMap::create(StringUtils::format("map/stage%d.tmx", stageNumber));
     this->addChild(map);
     this->setTiledMap(map);
     

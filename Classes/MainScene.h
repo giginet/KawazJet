@@ -24,9 +24,15 @@ public:
         GAMEOVER
     };
     
-    static cocos2d::Scene* createScene();
+    static cocos2d::Scene* createSceneWithStage(int stageNumber);
     
     void onEnterTransitionDidFinish() override;
+    
+    MainScene();
+    virtual ~MainScene();
+    bool init() override;
+    bool initWithStage(int stageNumber);
+    void update(float dt) override;
     
     /// 画面がタップされているかどうか
     CC_SYNTHESIZE(bool, _isPress, IsPress);
@@ -41,12 +47,6 @@ public:
     /// 背景用ParallaxNode
     CC_SYNTHESIZE_RETAIN(cocos2d::ParallaxNode *, _parallaxNode, ParallaxNode);
     CREATE_FUNC(MainScene);
-    
-CC_CONSTRUCTOR_ACCESS:
-    MainScene();
-    virtual ~MainScene();
-    bool init() override;
-    void update(float dt) override;
     
 private:
     void onGameOver();

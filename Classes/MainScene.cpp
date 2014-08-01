@@ -11,10 +11,12 @@
 
 USING_NS_CC;
 
+/// ステージ数
+const int STAGE_COUNT = 2;
 const Vec2 GRAVITY_ACCELERATION = Vec2(0, -10);
-const Vec2 IMPULSE_ACCELERATION = Vec2(0, 1000);
+const Vec2 IMPULSE_ACCELERATION = Vec2(0, 1400);
 
-Scene* MainScene::createScene()
+Scene* MainScene::createSceneWithStage(int stageNumber)
 {
     // 物理エンジンを有効にしたシーンを作成する
     auto scene = Scene::createWithPhysics();
@@ -31,7 +33,12 @@ Scene* MainScene::createScene()
     // スピードを設定する
     world->setSpeed(6.0f);
     
-    auto layer = MainScene::create();
+    auto layer = new MainScene();
+    if (layer && layer->initWithStage(stageNumber)) {
+        layer->autorelease();
+    } else {
+        CC_SAFE_RELEASE_NULL(layer);
+    }
     
     scene->addChild(layer);
     
@@ -39,6 +46,11 @@ Scene* MainScene::createScene()
 }
 
 bool MainScene::init()
+{
+    return this->initWithStage(0);
+}
+
+bool MainScene::initWithStage(int stageNumber)
 {
     if (!Layer::init()) {
         return false;
@@ -54,10 +66,10 @@ bool MainScene::init()
     auto parallaxNode = ParallaxNode::create();
     this->addChild(parallaxNode);
     
-    auto layer = Stage::create();
-    this->setStage(layer);
+    auto stage = Stage::createWithStage(stageNumber);
+    this->setStage(stage);
     
-    auto mapWidth = layer->getTiledMap()->getContentSize().width;
+    auto mapWidth = stage->getTiledMap()->getContentSize().width;
     auto backgroundWidth = background->getContentSize().width;
     
     parallaxNode->addChild(background, 0, Vec2((backgroundWidth - winSize.width) / mapWidth, 0), Vec2::ZERO);
@@ -94,7 +106,7 @@ bool MainScene::init()
     };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
     
-    this->addChild(layer);
+    this->addChild(stage);
     
     auto label = Label::createWithTTF(StringUtils::toString(_coin), "fonts/Marker Felt.ttf", 48);
     this->addChild(label);
@@ -193,9 +205,10 @@ void MainScene::onGameOver()
     _stage->getPlayer()->removeFromParent();
     
     auto winSize = Director::getInstance()->getWinSize();
+    int currentStage = _stage->getStageNumber();
     auto label = Label::createWithSystemFont("もう一度", "Helvetica", 64);
-    auto menuItem = MenuItemLabel::create(label, [](Ref *sender) {
-        auto scene = MainScene::createScene();
+    auto menuItem = MenuItemLabel::create(label, [currentStage](Ref *sender) {
+        auto scene = MainScene::createSceneWithStage(currentStage);
         auto transition = TransitionFade::create(1.0, scene);
         Director::getInstance()->replaceScene(transition);
     });
@@ -219,9 +232,11 @@ void MainScene::onClear()
     this->addChild(clearLabel);
     clearLabel->setColor(Color3B::RED);
     
+    int nextStage = (_stage->getStageNumber() + 1) % STAGE_COUNT;
+    
     auto label = Label::createWithSystemFont("次のステージへ", "Helvetica", 64);
-    auto menuItem = MenuItemLabel::create(label, [](Ref *sender) {
-        auto scene = MainScene::createScene();
+    auto menuItem = MenuItemLabel::create(label, [nextStage](Ref *sender) {
+        auto scene = MainScene::createSceneWithStage(nextStage);
         auto transition = TransitionFade::create(1.0, scene);
         Director::getInstance()->replaceScene(transition);
     });
