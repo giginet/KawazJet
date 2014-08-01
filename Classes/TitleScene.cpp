@@ -56,5 +56,5 @@ bool TitleScene::init()
 void TitleScene::onEnterTransitionDidFinish()
 {
     // BGMの再生
-    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(AudioUtils::getFileName("title").c_str());
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(AudioUtils::getFileName("title").c_str(), true);
 }

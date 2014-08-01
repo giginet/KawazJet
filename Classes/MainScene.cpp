@@ -143,16 +143,21 @@ bool MainScene::initWithStage(int stageNumber)
     ground->setScale(15);
     parallaxNode->addChild(ground, 2, Vec2(0.5, 0), Vec2(mapWidth / 2.0, 80));
     
+    auto stageLabel = Label::createWithSystemFont(StringUtils::format("%d", _stage->getStageNumber() + 1), "Helvetica", 64);
+    stageLabel->setPosition(Vec2(30, 600));
+    this->addChild(stageLabel);
+    
     return true;
 }
 
-MainScene::MainScene() :
-_isPress(false),
-_coin(0),
-_state(State::MAIN),
-_stage(nullptr),
-_parallaxNode(nullptr),
-_coinLabel(nullptr)
+MainScene::MainScene()
+: _isPress(false)
+, _coin(0)
+, _state(State::MAIN)
+, _stage(nullptr)
+, _parallaxNode(nullptr)
+, _coinLabel(nullptr)
+, _stageLabel(nullptr)
 {
 }
 
@@ -161,12 +166,13 @@ MainScene::~MainScene()
     CC_SAFE_RELEASE_NULL(_stage);
     CC_SAFE_RELEASE_NULL(_parallaxNode);
     CC_SAFE_RELEASE_NULL(_coinLabel);
+    CC_SAFE_RELEASE_NULL(_stageLabel);
 }
 
 void MainScene::onEnterTransitionDidFinish()
 {
     Layer::onEnterTransitionDidFinish();
-    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(AudioUtils::getFileName("main").c_str());
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(AudioUtils::getFileName("main").c_str(), true);
 }
 
 void MainScene::update(float dt)

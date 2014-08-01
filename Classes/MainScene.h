@@ -44,6 +44,8 @@ public:
     CC_SYNTHESIZE_RETAIN(Stage *, _stage, Stage);
     /// コイン枚数表示用のラベル
     CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _coinLabel, CoinLabel);
+    /// ステージ番号表示用のラベル
+    CC_SYNTHESIZE_RETAIN(cocos2d::Label *, _stageLabel, StageLabel);
     /// 背景用ParallaxNode
     CC_SYNTHESIZE_RETAIN(cocos2d::ParallaxNode *, _parallaxNode, ParallaxNode);
     CREATE_FUNC(MainScene);
