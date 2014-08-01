@@ -13,8 +13,8 @@ USING_NS_CC;
 
 /// ステージ数
 const int STAGE_COUNT = 5;
-const Vec2 GRAVITY_ACCELERATION = Vec2(0, -10);
-const Vec2 IMPULSE_ACCELERATION = Vec2(0, 1400);
+const Vec2 GRAVITY_ACCELERATION = Vec2(0, -10 * 24);
+const Vec2 IMPULSE_ACCELERATION = Vec2(0, 2000 * 6);
 
 Scene* MainScene::createSceneWithStage(int stageNumber)
 {
@@ -31,7 +31,7 @@ Scene* MainScene::createSceneWithStage(int stageNumber)
     world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     //#endif
     // スピードを設定する
-    world->setSpeed(6.0f);
+    //world->setSpeed(6.0f);
     
     auto layer = new MainScene();
     if (layer && layer->initWithStage(stageNumber)) {

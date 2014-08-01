@@ -105,7 +105,7 @@ Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinat
         
         auto material = PhysicsMaterial();
         material.friction = 0;
-        material.restitution = 0.5;
+        material.restitution = 0.1;
         
         // 剛体を設置する
         auto physicsBody = PhysicsBody::createBox(sprite->getContentSize(), material);

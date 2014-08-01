@@ -14,9 +14,9 @@ USING_NS_CC;
 /// アニメーションが何フレームあるか
 const int FRAME_COUNT = 4;
 /// 横方向の加速度の最大値
-const int ACCELERATION_LIMIT = 80;
+const int ACCELERATION_LIMIT = 80 * 6;
 /// 初期ジェット加速度
-const Vec2 INITIAL_ACCELERATION = Vec2(400, 0);
+const Vec2 INITIAL_ACCELERATION = Vec2(400 * 6, 0);
 
 bool Player::init()
 {
@@ -70,6 +70,9 @@ void Player::update(float dt)
     auto v = this->getPhysicsBody()->getVelocity();
     if (v.x > ACCELERATION_LIMIT) {
         v.x = ACCELERATION_LIMIT;
-        this->getPhysicsBody()->setVelocity(v);
     }
+    if (v.y > ACCELERATION_LIMIT) {
+        v.y = ACCELERATION_LIMIT;
+    }
+    this->getPhysicsBody()->setVelocity(v);
 }
