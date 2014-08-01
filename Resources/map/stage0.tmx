@@ -1,126 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="117" height="13" tilewidth="48" tileheight="48">
- <tileset firstgid="1" name="Object" tilewidth="48" tileheight="48">
-  <image source="object.png" width="240" height="48"/>
-  <tile id="0">
-   <properties>
-    <property name="animation" value="hazard.png"/>
-    <property name="animationCount" value="2"/>
-    <property name="category" value="4"/>
-   </properties>
-  </tile>
-  <tile id="1">
-   <properties>
-    <property name="category" value="8"/>
-   </properties>
-  </tile>
-  <tile id="2">
-   <properties>
-    <property name="category" value="16"/>
-   </properties>
-  </tile>
-  <tile id="3">
-   <properties>
-    <property name="category" value="4"/>
-   </properties>
-  </tile>
-  <tile id="4">
-   <properties>
-    <property name="category" value="4"/>
-   </properties>
-  </tile>
- </tileset>
- <tileset firstgid="6" name="Terrain" tilewidth="48" tileheight="48">
-  <image source="terrain.png" width="768" height="48"/>
-  <tile id="0">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="1">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="2">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="3">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="4">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="5">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="6">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="7">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="8">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="9">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="10">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="11">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="12">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="13">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="14">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
-  <tile id="15">
-   <properties>
-    <property name="category" value="1"/>
-   </properties>
-  </tile>
- </tileset>
- <layer name="Terrain" width="117" height="13">
+<map version="1.0" orientation="orthogonal" width="150" height="13" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" source="object.tsx"/>
+ <tileset firstgid="6" source="terrain.tsx"/>
+ <layer name="Terrain" width="150" height="13">
   <data encoding="base64" compression="zlib">
-   eJztmEkOACEIBDnNOJv/f+7IB4wLLcR0JRyJxgKJihAEx0Ss5itxV+Jx2FNERt14OD2lXmPJYU8RodP9oNN4zM63FW50DlrMOjptz0ejLizOm07b85FojyaxOe9c4qrEa7DGDqBrIctePRQNy3dmT57V3Uuw9DjVXuW9GB+PtwzBQqcxmPnbRfz3/q2JA+Q=
+   eJztV7sSgCAMY+L/P9nVBU1JSkGTu06moa+D2ltr3WYTGwPWf5WmcRY8V0YGKueqipflv5vmqrrtpIm+4xk8xj+CSk01L4qKuUJ3RDVvFBviH91v1XtwRLMyxru2Gm99Rfqj5o1iY/+H2BlkeavqFoXvK662itgjZ/m+eucguWTwGH9UD9WcOa+ibieBeWtmecoeIz7sd8ZHzTPOgXtq/A1Pu3227RbPivy+ACT3C3uoC1k=
   </data>
  </layer>
- <layer name="Object" width="117" height="13">
+ <layer name="Object" width="150" height="13">
   <data encoding="base64" compression="zlib">
-   eJztl9EOgCAIADXr/3+5p7bGREAFkXlb01LTOtFK6TCbbNTPZdSPJnej7DEbBc3ndOY7L5VrnpxeSJ5zLmkHDyukTnvno0enmBfMOZXn+tdGI05reHPKjU+pR26czwDbC0acevIkAfOFrZWwvrSdNZTT1jfU7k7/+Z64pep53E8zSCG7Oo3OSJwefBMx5mr/VBHBnjOa0wJSCa21qaesNQZpm1r9VU5XrOEnTnXvf/bleGBOXyFYAOQ=
+   eJzt18ENACAIBEGj/fdsB3708ICdxLdI9uMYgJ/5+Dhzn68SuoICXUGhU1eIQ1dQyNjVCrrnxGEGZxm7gj+6ggJdQaFTV6/fWnlXtzrt6ndHmXblgL9RPRsTqQJY
   </data>
  </layer>
 </map>
