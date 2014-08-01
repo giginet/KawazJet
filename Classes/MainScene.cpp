@@ -115,7 +115,7 @@ bool MainScene::init()
         this->setIsPress(false);
     };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-    
+
     for (int i = 0; i < 10; ++i) {
         auto wrapper = Node::create();
         auto gear = Sprite3D::create("model/gear.obj");
