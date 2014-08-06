@@ -47,7 +47,13 @@ bool Stage::initWithStage(int stageNumber)
     
     auto winSize = Director::getInstance()->getWinSize();
     auto map = TMXTiledMap::create(StringUtils::format("map/stage%d.tmx", stageNumber));
+    
+    if (Director::getInstance()->getContentScaleFactor() == 1.0) {
+        map->setScale(0.5);
+    }
+    
     this->addChild(map);
+    
     this->setTiledMap(map);
     
     // 地形レイヤーを取得する
@@ -76,8 +82,8 @@ bool Stage::initWithStage(int stageNumber)
     // Playerの移動に画面を追従させる
     this->runAction(Follow::create(player, Rect(0,
                                                 0,
-                                                _tiledMap->getContentSize().width,
-                                                _tiledMap->getContentSize().height)));
+                                                _tiledMap->getContentSize().width * _tiledMap->getScale(),
+                                                _tiledMap->getContentSize().height * _tiledMap->getScale())));
 
     this->scheduleUpdate();
     
@@ -128,8 +134,9 @@ Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinat
             this->addChild(sprite);
             
             Vector<SpriteFrame *> frames;
+            auto scale = 0.5;
             for (int i = 0; i < animationCount; ++i) {
-                auto frame = SpriteFrame::create(animationSprite, Rect(tileSize.width * i, 0, tileSize.width, tileSize.height));
+                auto frame = SpriteFrame::create(animationSprite, Rect(tileSize.width * i * scale, 0, tileSize.width * scale, tileSize.height * scale));
                 frames.pushBack(frame);
             }
             auto animation = Animation::createWithSpriteFrames(frames);
