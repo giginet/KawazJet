@@ -50,6 +50,11 @@ bool TitleScene::init()
     };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
+    auto winSize = Director::getInstance()->getWinSize();
+    auto background = Sprite::create("title.png");
+    background->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0));
+    this->addChild(background);
+    
     return true;
 }
 
