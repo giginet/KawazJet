@@ -28,7 +28,7 @@ Scene* MainScene::createSceneWithStage(int stageNumber)
     world->setGravity(GRAVITY_ACCELERATION);
     
     //#if COCOS2D_DEBUG > 1
-    world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    //world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     //#endif
     // スピードを設定する
     world->setSpeed(6.0f);
