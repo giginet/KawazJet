@@ -212,15 +212,19 @@ void MainScene::onGameOver()
     
     auto winSize = Director::getInstance()->getWinSize();
     int currentStage = _stage->getStageNumber();
-    auto label = Label::createWithSystemFont("もう一度", "Helvetica", 64);
-    auto menuItem = MenuItemLabel::create(label, [currentStage](Ref *sender) {
+    
+    auto gameover = Sprite::create("gameover.png");
+    gameover->setPosition(Vec2(winSize.width / 2.0, winSize.height / 1.5));
+    this->addChild(gameover);
+    
+    auto menuItem = MenuItemImage::create("replay.png", "replay_pressed.png", [currentStage](Ref *sender) {
         auto scene = MainScene::createSceneWithStage(currentStage);
         auto transition = TransitionFade::create(1.0, scene);
         Director::getInstance()->replaceScene(transition);
     });
     auto menu = Menu::create(menuItem, nullptr);
     this->addChild(menu);
-    menu->setPosition(winSize.width / 2.0, winSize.height / 2.0);
+    menu->setPosition(winSize.width / 2.0, winSize.height / 3);
     CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("explode").c_str());
 }
@@ -233,22 +237,20 @@ void MainScene::onClear()
     this->getEventDispatcher()->removeAllEventListeners();
     
     _stage->getPlayer()->getPhysicsBody()->setEnable(false);
-    auto clearLabel = Label::createWithSystemFont("Clear!", "Helvetica", 128);
-    clearLabel->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0 + 100));
-    this->addChild(clearLabel);
-    clearLabel->setColor(Color3B::RED);
+    auto clear = Sprite::create("clear.png");
+    clear->setPosition(Vec2(winSize.width / 2.0, winSize.height / 1.5));
+    this->addChild(clear);
     
     int nextStage = (_stage->getStageNumber() + 1) % STAGE_COUNT;
     
-    auto label = Label::createWithSystemFont("次のステージへ", "Helvetica", 64);
-    auto menuItem = MenuItemLabel::create(label, [nextStage](Ref *sender) {
+    auto menuItem = MenuItemImage::create("next.png", "next_pressed.png", [nextStage](Ref *sender) {
         auto scene = MainScene::createSceneWithStage(nextStage);
         auto transition = TransitionFade::create(1.0, scene);
         Director::getInstance()->replaceScene(transition);
     });
     auto menu = Menu::create(menuItem, nullptr);
     this->addChild(menu);
-    menu->setPosition(winSize.width / 2.0, winSize.height / 2.0);
+    menu->setPosition(winSize.width / 2.0, winSize.height / 3.0);
     
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(AudioUtils::getFileName("clear").c_str());
 }

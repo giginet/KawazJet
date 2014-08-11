@@ -143,9 +143,8 @@ Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinat
             animation->setDelayPerUnit(0.15);
             sprite->runAction(RepeatForever::create(Animate::create(animation)));
         }
-        
-        sprite->setPhysicsBody(physicsBody);
         sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+        sprite->setPhysicsBody(physicsBody);
         
         return sprite;
     }
