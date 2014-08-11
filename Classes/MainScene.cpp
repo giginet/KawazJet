@@ -100,6 +100,7 @@ bool MainScene::initWithStage(int stageNumber)
             // アイテム
             layer->removeChild(body->getNode(), true);
             CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("food").c_str());
+            this->onGetItem(body->getNode());
         }
         
         return true;
@@ -109,7 +110,7 @@ bool MainScene::initWithStage(int stageNumber)
     this->addChild(stage);
     
     auto coin = Sprite::create("coin.png");
-    coin->setPosition(Vec2(160, winSize.height -35));
+    coin->setPosition(Vec2(160, winSize.height - 15));
     this->addChild(coin);
     
     auto label = Label::createWithCharMap("numbers.png", 11, 12, '0');
@@ -152,12 +153,23 @@ bool MainScene::initWithStage(int stageNumber)
     stageLabel->setPosition(Vec2(30, winSize.height - 30));
     this->addChild(stageLabel);
     
+    // 取得したアイテムの数を表示
+    const int maxItemCount = 3;
+    for (int i = 0; i < maxItemCount; ++i) {
+        auto sprite = Sprite::create("item.png");
+        sprite->setPosition(Vec2(winSize.width - 70 + i * 20, winSize.height - 15));
+        this->addChild(sprite);
+        _items.pushBack(sprite);
+        sprite->setColor(Color3B::BLACK);
+    }
+    
     return true;
 }
 
 MainScene::MainScene()
 : _isPress(false)
 , _coin(0)
+, _itemCount(0)
 , _state(State::MAIN)
 , _stage(nullptr)
 , _parallaxNode(nullptr)
@@ -270,4 +282,12 @@ void MainScene::onClear()
     menu->setPosition(winSize.width / 2.0, winSize.height / 3.0);
     
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(AudioUtils::getFileName("clear").c_str());
+}
+
+void MainScene::onGetItem(cocos2d::Node * item)
+{
+    _itemCount += 1;
+    for (int i = 0; i < _itemCount; ++i) {
+        _items.at(i)->setColor(Color3B::WHITE);
+    }
 }
