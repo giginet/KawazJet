@@ -108,6 +108,10 @@ bool MainScene::initWithStage(int stageNumber)
     
     this->addChild(stage);
     
+    auto coin = Sprite::create("coin.png");
+    coin->setPosition(Vec2(160, winSize.height -35));
+    this->addChild(coin);
+    
     auto label = Label::createWithCharMap("numbers.png", 11, 12, '0');
     this->addChild(label);
     label->setPosition(Vec2(200, winSize.height - 30));
