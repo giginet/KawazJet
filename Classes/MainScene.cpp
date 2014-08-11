@@ -127,7 +127,7 @@ bool MainScene::initWithStage(int stageNumber)
         this->setIsPress(false);
     };
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-
+    
     for (int i = 0; i < 10; ++i) {
         auto wrapper = Node::create();
         auto gear = Sprite3D::create("model/gear.obj");
@@ -174,6 +174,18 @@ void MainScene::onEnterTransitionDidFinish()
 {
     Layer::onEnterTransitionDidFinish();
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(AudioUtils::getFileName("main").c_str(), true);
+    // GO演出
+    
+    auto winSize = Director::getInstance()->getWinSize();
+    auto go = Sprite::create("go.png");
+    go->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0));
+    this->addChild(go);
+    
+    go->setScale(0);
+    go->runAction(Sequence::create(ScaleTo::create(0.1, 1.0),
+                                   DelayTime::create(0.5),
+                                   ScaleTo::create(0.1, 0),
+                                   NULL));
 }
 
 void MainScene::update(float dt)
