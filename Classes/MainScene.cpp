@@ -108,9 +108,9 @@ bool MainScene::initWithStage(int stageNumber)
     
     this->addChild(stage);
     
-    auto label = Label::createWithTTF(StringUtils::toString(_coin), "fonts/Marker Felt.ttf", 48);
+    auto label = Label::createWithCharMap("numbers.png", 11, 12, '0');
     this->addChild(label);
-    label->setPosition(Vec2(200, winSize.height - 60));
+    label->setPosition(Vec2(200, winSize.height - 30));
     label->enableShadow();
     this->setCoinLabel(label);
     
@@ -143,8 +143,9 @@ bool MainScene::initWithStage(int stageNumber)
     ground->setScale(15);
     parallaxNode->addChild(ground, 2, Vec2(0.5, 0), Vec2(mapWidth / 2.0, 80));
     
-    auto stageLabel = Label::createWithSystemFont(StringUtils::format("%d", _stage->getStageNumber() + 1), "Helvetica", 64);
-    stageLabel->setPosition(Vec2(30, 600));
+    auto stageLabel = Label::createWithCharMap("numbers.png", 11, 12, '0');
+    stageLabel->setString(StringUtils::format("%d", _stage->getStageNumber() + 1));
+    stageLabel->setPosition(Vec2(30, winSize.height - 30));
     this->addChild(stageLabel);
     
     return true;
