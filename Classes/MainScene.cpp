@@ -113,9 +113,9 @@ bool MainScene::initWithStage(int stageNumber)
     coin->setPosition(Vec2(160, winSize.height - 15));
     this->addChild(coin);
     
-    auto label = Label::createWithCharMap("numbers.png", 11, 12, '0');
+    auto label = Label::createWithCharMap("numbers.png", 16, 18, '0');
     this->addChild(label);
-    label->setPosition(Vec2(200, winSize.height - 30));
+    label->setPosition(Vec2(200, winSize.height - 10));
     label->enableShadow();
     this->setCoinLabel(label);
     
@@ -148,9 +148,15 @@ bool MainScene::initWithStage(int stageNumber)
     ground->setScale(15);
     parallaxNode->addChild(ground, 2, Vec2(0.5, 0), Vec2(mapWidth / 2.0, 80));
     
-    auto stageLabel = Label::createWithCharMap("numbers.png", 11, 12, '0');
+    // ステージ番号の表示
+    auto stageBackground = Sprite::create("stage_ui.png");
+    stageBackground->setPosition(Vec2(stageBackground->getContentSize().width / 2,
+    winSize.height - stageBackground->getContentSize().height / 2.0));
+    this->addChild(stageBackground);
+    
+    auto stageLabel = Label::createWithCharMap("numbers.png", 16, 18, '0');
     stageLabel->setString(StringUtils::format("%d", _stage->getStageNumber() + 1));
-    stageLabel->setPosition(Vec2(30, winSize.height - 30));
+    stageLabel->setPosition(Vec2(60, winSize.height - 22));
     this->addChild(stageLabel);
     
     // 取得したアイテムの数を表示
