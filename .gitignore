@@ -140,3 +140,5 @@ project.properties
 
 *.zip
 *.ipa
+
+!Resources/model/*.obj
