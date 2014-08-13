@@ -109,16 +109,6 @@ bool MainScene::initWithStage(int stageNumber)
     
     this->addChild(stage);
     
-    auto coin = Sprite::create("coin.png");
-    coin->setPosition(Vec2(160, winSize.height - 15));
-    this->addChild(coin);
-    
-    auto label = Label::createWithCharMap("numbers.png", 16, 18, '0');
-    this->addChild(label);
-    label->setPosition(Vec2(200, winSize.height - 10));
-    label->enableShadow();
-    this->setCoinLabel(label);
-    
     // タッチしたときにタッチされているフラグをオンにする
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = [this](Touch *touch, Event *event) {
@@ -159,6 +149,24 @@ bool MainScene::initWithStage(int stageNumber)
     stageLabel->setPosition(Vec2(60, winSize.height - 22));
     this->addChild(stageLabel);
     
+    // 制限時間を表示
+    auto secondLabel = Label::createWithCharMap("numbers.png", 16, 18, '0');
+    secondLabel->setPosition(Vec2(300, winSize.height - 10));
+    this->addChild(secondLabel);
+    this->setSecondLabel(secondLabel);
+
+    // コインの枚数の表示
+    auto coin = Sprite::create("coin.png");
+    coin->setPosition(Vec2(160, winSize.height - 15));
+    this->addChild(coin);
+    
+    auto label = Label::createWithCharMap("numbers.png", 16, 18, '0');
+    this->addChild(label);
+    label->setPosition(Vec2(200, winSize.height - 10));
+    label->enableShadow();
+    this->setCoinLabel(label);
+
+    
     // 取得したアイテムの数を表示
     const int maxItemCount = 3;
     for (int i = 0; i < maxItemCount; ++i) {
@@ -176,11 +184,13 @@ MainScene::MainScene()
 : _isPress(false)
 , _coin(0)
 , _itemCount(0)
+, _second(0)
 , _state(State::MAIN)
 , _stage(nullptr)
 , _parallaxNode(nullptr)
 , _coinLabel(nullptr)
 , _stageLabel(nullptr)
+, _secondLabel(nullptr)
 {
 }
 
@@ -190,6 +200,7 @@ MainScene::~MainScene()
     CC_SAFE_RELEASE_NULL(_parallaxNode);
     CC_SAFE_RELEASE_NULL(_coinLabel);
     CC_SAFE_RELEASE_NULL(_stageLabel);
+    CC_SAFE_RELEASE_NULL(_secondLabel);
 }
 
 void MainScene::onEnterTransitionDidFinish()
@@ -215,12 +226,14 @@ void MainScene::update(float dt)
     // 背景をプレイヤーの位置によって動かす
     _parallaxNode->setPosition(_stage->getPlayer()->getPosition() * -1);
     
+    // クリア判定
     if (_stage->getPlayer()->getPosition().x >= _stage->getTiledMap()->getContentSize().width * _stage->getTiledMap()->getScale()) {
         if (_state == State::MAIN) {
             this->onClear();
         }
     }
     
+    // 画面外からはみ出したとき、ゲームオーバー判定
     auto winSize = Director::getInstance()->getWinSize();
     auto position = _stage->getPlayer()->getPosition();
     const auto margin = 100;
@@ -230,12 +243,18 @@ void MainScene::update(float dt)
         }
     }
     
+    // コインの枚数の更新
     this->getCoinLabel()->setString(StringUtils::toString(_coin));
     
     // 画面がタップされている間
     if (this->getIsPress()) {
         // プレイヤーに上方向の推進力を与える
         _stage->getPlayer()->getPhysicsBody()->applyImpulse(IMPULSE_ACCELERATION);
+    }
+    
+    if (_state == State::MAIN) {
+        _second += dt;
+        this->updateSecond();
     }
 }
 
@@ -296,4 +315,12 @@ void MainScene::onGetItem(cocos2d::Node * item)
     for (int i = 0; i < _itemCount; ++i) {
         _items.at(i)->setColor(Color3B::WHITE);
     }
+}
+
+void MainScene::updateSecond()
+{
+    int sec = floor(_second);
+    int milisec = floor((_second - sec) * 100);
+    auto string = StringUtils::format("%03d:%02d", sec, milisec);
+    _secondLabel->setString(string);
 }
