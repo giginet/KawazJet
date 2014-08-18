@@ -16,7 +16,7 @@ const int STAGE_COUNT = 5;
 const Vec2 GRAVITY_ACCELERATION = Vec2(0, -10);
 const Vec2 IMPULSE_ACCELERATION = Vec2(0, 2000);
 
-Scene* MainScene::createSceneWithStage(int stageNumber)
+Scene* MainScene::createSceneWithStage(int level)
 {
     // 物理エンジンを有効にしたシーンを作成する
     auto scene = Scene::createWithPhysics();
@@ -34,7 +34,7 @@ Scene* MainScene::createSceneWithStage(int stageNumber)
     world->setSpeed(6.0f);
     
     auto layer = new MainScene();
-    if (layer && layer->initWithStage(stageNumber)) {
+    if (layer && layer->initWithLevel(level)) {
         layer->autorelease();
     } else {
         CC_SAFE_RELEASE_NULL(layer);
@@ -47,10 +47,10 @@ Scene* MainScene::createSceneWithStage(int stageNumber)
 
 bool MainScene::init()
 {
-    return this->initWithStage(0);
+    return this->initWithLevel(0);
 }
 
-bool MainScene::initWithStage(int stageNumber)
+bool MainScene::initWithLevel(int level)
 {
     if (!Layer::init()) {
         return false;
@@ -66,7 +66,7 @@ bool MainScene::initWithStage(int stageNumber)
     auto parallaxNode = ParallaxNode::create();
     this->addChild(parallaxNode);
     
-    auto stage = Stage::createWithStage(stageNumber);
+    auto stage = Stage::createWithStage(level);
     this->setStage(stage);
     
     auto mapWidth = stage->getTiledMap()->getContentSize().width;
@@ -87,9 +87,6 @@ bool MainScene::initWithStage(int stageNumber)
         
         if (category & static_cast<int>(Stage::TileType::ENEMY)) {
             // ゲームオーバー
-            auto explosition = ParticleExplosion::create();
-            explosition->setPosition(_stage->getPlayer()->getPosition());
-            _stage->addChild(explosition);
             this->onGameOver();
         } else if (category & (int)Stage::TileType::COIN) {
             // コイン
@@ -141,11 +138,11 @@ bool MainScene::initWithStage(int stageNumber)
     // ステージ番号の表示
     auto stageBackground = Sprite::create("stage_ui.png");
     stageBackground->setPosition(Vec2(stageBackground->getContentSize().width / 2,
-    winSize.height - stageBackground->getContentSize().height / 2.0));
+                                      winSize.height - stageBackground->getContentSize().height / 2.0));
     this->addChild(stageBackground);
     
     auto stageLabel = Label::createWithCharMap("numbers.png", 16, 18, '0');
-    stageLabel->setString(StringUtils::format("%d", _stage->getStageNumber() + 1));
+    stageLabel->setString(StringUtils::format("%d", _stage->getLevel() + 1));
     stageLabel->setPosition(Vec2(60, winSize.height - 22));
     this->addChild(stageLabel);
     
@@ -154,7 +151,7 @@ bool MainScene::initWithStage(int stageNumber)
     secondLabel->setPosition(Vec2(300, winSize.height - 10));
     this->addChild(secondLabel);
     this->setSecondLabel(secondLabel);
-
+    
     // コインの枚数の表示
     auto coin = Sprite::create("coin.png");
     coin->setPosition(Vec2(160, winSize.height - 15));
@@ -165,7 +162,7 @@ bool MainScene::initWithStage(int stageNumber)
     label->setPosition(Vec2(200, winSize.height - 10));
     label->enableShadow();
     this->setCoinLabel(label);
-
+    
     
     // 取得したアイテムの数を表示
     const int maxItemCount = 3;
@@ -265,7 +262,7 @@ void MainScene::onGameOver()
     _stage->getPlayer()->removeFromParent();
     
     auto winSize = Director::getInstance()->getWinSize();
-    int currentStage = _stage->getStageNumber();
+    int currentStage = _stage->getLevel();
     
     auto gameover = Sprite::create("gameover.png");
     gameover->setPosition(Vec2(winSize.width / 2.0, winSize.height / 1.5));
@@ -279,6 +276,13 @@ void MainScene::onGameOver()
     auto menu = Menu::create(menuItem, nullptr);
     this->addChild(menu);
     menu->setPosition(winSize.width / 2.0, winSize.height / 3);
+    
+    // パーティクル表示
+    auto explosition = ParticleExplosion::create();
+    explosition->setPosition(_stage->getPlayer()->getPosition());
+    _stage->addChild(explosition);
+    
+    
     CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("explode").c_str());
 }
@@ -295,7 +299,7 @@ void MainScene::onClear()
     clear->setPosition(Vec2(winSize.width / 2.0, winSize.height / 1.5));
     this->addChild(clear);
     
-    int nextStage = (_stage->getStageNumber() + 1) % STAGE_COUNT;
+    int nextStage = (_stage->getLevel() + 1) % STAGE_COUNT;
     
     auto menuItem = MenuItemImage::create("next.png", "next_pressed.png", [nextStage](Ref *sender) {
         auto scene = MainScene::createSceneWithStage(nextStage);

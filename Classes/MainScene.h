@@ -24,14 +24,14 @@ public:
         GAMEOVER
     };
     
-    static cocos2d::Scene* createSceneWithStage(int stageNumber);
+    static cocos2d::Scene* createSceneWithStage(int level);
     
     void onEnterTransitionDidFinish() override;
     
     MainScene();
     virtual ~MainScene();
     bool init() override;
-    bool initWithStage(int stageNumber);
+    bool initWithLevel(int level);
     void update(float dt) override;
     void updateSecond();
     

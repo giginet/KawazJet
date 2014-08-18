@@ -30,22 +30,24 @@ public:
         ITEN = 1 << 4
     };
     
-    bool initWithStage(int stageNumber);
-    
     Stage();
     virtual ~Stage();
 
     void update(float dt) override;
 
-    CC_SYNTHESIZE_READONLY(int, _stageNumber, StageNumber);
+    CC_SYNTHESIZE_READONLY(int, _level, Level);
     CC_SYNTHESIZE_RETAIN(cocos2d::TMXTiledMap *, _tiledMap, TiledMap);
     CC_SYNTHESIZE_RETAIN(Player *, _player, Player);
     
     /** ステージ番号からステージを生成します
-     *  @param stageNumber ステージ番号
+     *  @param level ステージ番号
      *  @return ステージ
      */
-    static Stage * createWithStage(int stageNumber);
+    static Stage * createWithStage(int level);
+protected:
+    
+    bool initWithLevel(int level);
+    
 private:
     /** 指定のレイヤーの特定位置のタイルに剛体を設置します
      *  指定座標にタイルがなかった場合はnullptrを返します

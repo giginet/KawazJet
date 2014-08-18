@@ -11,7 +11,7 @@
 USING_NS_CC;
 
 Stage::Stage()
-: _stageNumber(0)
+: _level(0)
 , _tiledMap(nullptr)
 , _player(nullptr)
 {
@@ -23,10 +23,10 @@ Stage::~Stage()
     CC_SAFE_RELEASE_NULL(_player);
 }
 
-Stage * Stage::createWithStage(int stageNumber)
+Stage * Stage::createWithStage(int level)
 {
     Stage *ret = new Stage();
-    if (ret->initWithStage(stageNumber))
+    if (ret->initWithLevel(level))
     {
         ret->autorelease();
         return ret;
@@ -35,7 +35,7 @@ Stage * Stage::createWithStage(int stageNumber)
     return nullptr;
 }
 
-bool Stage::initWithStage(int stageNumber)
+bool Stage::initWithLevel(int level)
 {
     if (!Layer::init())
     {
@@ -43,10 +43,10 @@ bool Stage::initWithStage(int stageNumber)
     }
     
     // 現在のステージ番号をセット
-    _stageNumber = stageNumber;
+    _level = level;
     
     auto winSize = Director::getInstance()->getWinSize();
-    auto map = TMXTiledMap::create(StringUtils::format("map/stage%d.tmx", stageNumber));
+    auto map = TMXTiledMap::create(StringUtils::format("map/stage%d.tmx", level));
     
     if (Director::getInstance()->getContentScaleFactor() == 1.0) {
         map->setScale(0.5);
