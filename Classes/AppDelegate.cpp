@@ -56,6 +56,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
             glview->setDesignResolutionSize(480, 320, ResolutionPolicy::NO_BORDER);
             searchResolutionOrder.push_back("images/nonretina");
         }
+    } else if (platform == Platform::OS_IPAD) {
+        fu->addSearchPath("music/caf");
+        fu->addSearchPath("se/caf");
+        if (frameSize.width > 768.f) {
+            director->setContentScaleFactor(2.0f);
+            searchResolutionOrder.push_back("images/retina");
+        } else {
+            searchResolutionOrder.push_back("images/nonretina");
+        }
+        glview->setDesignResolutionSize(568, 320, ResolutionPolicy::SHOW_ALL);
     } else if (platform == Platform::OS_ANDROID) {
         // Android端末のとき
         glview->setDesignResolutionSize(480, 320, ResolutionPolicy::NO_BORDER);
