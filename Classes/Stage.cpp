@@ -23,7 +23,7 @@ Stage::~Stage()
     CC_SAFE_RELEASE_NULL(_player);
 }
 
-Stage * Stage::createWithStage(int level)
+Stage * Stage::createWithLevel(int level)
 {
     Stage *ret = new Stage();
     if (ret->initWithLevel(level))

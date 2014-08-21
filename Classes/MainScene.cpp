@@ -66,7 +66,7 @@ bool MainScene::initWithLevel(int level)
     auto parallaxNode = ParallaxNode::create();
     this->addChild(parallaxNode);
     
-    auto stage = Stage::createWithStage(level);
+    auto stage = Stage::createWithLevel(level);
     this->setStage(stage);
     
     auto mapWidth = stage->getTiledMap()->getContentSize().width;
@@ -149,6 +149,7 @@ bool MainScene::initWithLevel(int level)
     // 制限時間を表示
     auto secondLabel = Label::createWithCharMap("numbers.png", 16, 18, '0');
     secondLabel->setPosition(Vec2(300, winSize.height - 10));
+    secondLabel->enableShadow();
     this->addChild(secondLabel);
     this->setSecondLabel(secondLabel);
     
@@ -257,7 +258,6 @@ void MainScene::update(float dt)
 
 void MainScene::onGameOver()
 {
-    
     this->setState(State::GAMEOVER);
     _stage->getPlayer()->removeFromParent();
     

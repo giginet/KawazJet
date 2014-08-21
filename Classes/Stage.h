@@ -30,9 +30,6 @@ public:
         ITEN = 1 << 4
     };
     
-    Stage();
-    virtual ~Stage();
-
     void update(float dt) override;
 
     CC_SYNTHESIZE_READONLY(int, _level, Level);
@@ -43,11 +40,12 @@ public:
      *  @param level ステージ番号
      *  @return ステージ
      */
-    static Stage * createWithStage(int level);
+    static Stage * createWithLevel(int level);
 protected:
-    
     bool initWithLevel(int level);
-    
+    Stage();
+    virtual ~Stage();
+
 private:
     /** 指定のレイヤーの特定位置のタイルに剛体を設置します
      *  指定座標にタイルがなかった場合はnullptrを返します

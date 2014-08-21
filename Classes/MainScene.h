@@ -24,14 +24,14 @@ public:
         GAMEOVER
     };
     
+    /** 任意の番号のステージでシーンを作成します
+     *  @params level ステージ番号
+     *  @return シーン
+     */
     static cocos2d::Scene* createSceneWithStage(int level);
     
     void onEnterTransitionDidFinish() override;
     
-    MainScene();
-    virtual ~MainScene();
-    bool init() override;
-    bool initWithLevel(int level);
     void update(float dt) override;
     void updateSecond();
     
@@ -58,6 +58,12 @@ public:
     /// 背景用ParallaxNode
     CC_SYNTHESIZE_RETAIN(cocos2d::ParallaxNode *, _parallaxNode, ParallaxNode);
     CREATE_FUNC(MainScene);
+    
+protected:
+    MainScene();
+    virtual ~MainScene();
+    bool init() override;
+    bool initWithLevel(int level);
     
 private:
     void onGameOver();
