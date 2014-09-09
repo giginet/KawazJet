@@ -68,9 +68,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview->setDesignResolutionSize(568, 320, ResolutionPolicy::SHOW_ALL);
     } else if (platform == Platform::OS_ANDROID) {
         // Android端末のとき
-        glview->setDesignResolutionSize(480, 320, ResolutionPolicy::NO_BORDER);
+        glview->setDesignResolutionSize(480, 320, ResolutionPolicy::SHOW_ALL);
         fu->addSearchPath("music/ogg");
         fu->addSearchPath("se/ogg");
+        searchResolutionOrder.push_back("images/nonretina");
     }
     // 画像の読み込み順を設定する
     FileUtils::getInstance()->setSearchResolutionsOrder(searchResolutionOrder);
