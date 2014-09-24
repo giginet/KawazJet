@@ -50,7 +50,7 @@ bool TitleScene::init()
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = [this, start](Touch* touch, Event* event) {
         start->setTexture(Director::getInstance()->getTextureCache()->addImage("start_pressed.png"));
-        
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("start").c_str());
         this->getEventDispatcher()->removeAllEventListeners();
         
         this->runAction(Sequence::create(DelayTime::create(1.0),

@@ -15,6 +15,7 @@ USING_NS_CC;
 const int STAGE_COUNT = 5;
 const Vec2 GRAVITY_ACCELERATION = Vec2(0, -10);
 const Vec2 IMPULSE_ACCELERATION = Vec2(0, 2000);
+const int MAX_ITEM_COUNT = 3;
 
 Scene* MainScene::createSceneWithStage(int level)
 {
@@ -96,8 +97,12 @@ bool MainScene::initWithLevel(int level)
         } else if (category & static_cast<int>(Stage::TileType::ITEN)) {
             // アイテム
             layer->removeChild(body->getNode(), true);
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("food").c_str());
             this->onGetItem(body->getNode());
+            if (_itemCount == MAX_ITEM_COUNT) {
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("complete").c_str());
+            } else {
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("food").c_str());
+            }
         }
         
         return true;
@@ -166,8 +171,7 @@ bool MainScene::initWithLevel(int level)
     
     
     // 取得したアイテムの数を表示
-    const int maxItemCount = 3;
-    for (int i = 0; i < maxItemCount; ++i) {
+    for (int i = 0; i < MAX_ITEM_COUNT; ++i) {
         auto sprite = Sprite::create("item.png");
         sprite->setPosition(Vec2(winSize.width - 70 + i * 20, winSize.height - 15));
         this->addChild(sprite);
@@ -269,6 +273,7 @@ void MainScene::onGameOver()
     this->addChild(gameover);
     
     auto menuItem = MenuItemImage::create("replay.png", "replay_pressed.png", [currentStage](Ref *sender) {
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("decide").c_str());
         auto scene = MainScene::createSceneWithStage(currentStage);
         auto transition = TransitionFade::create(1.0, scene);
         Director::getInstance()->replaceScene(transition);
@@ -302,6 +307,7 @@ void MainScene::onClear()
     int nextStage = (_stage->getLevel() + 1) % STAGE_COUNT;
     
     auto menuItem = MenuItemImage::create("next.png", "next_pressed.png", [nextStage](Ref *sender) {
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("decide").c_str());
         auto scene = MainScene::createSceneWithStage(nextStage);
         auto transition = TransitionFade::create(1.0, scene);
         Director::getInstance()->replaceScene(transition);
