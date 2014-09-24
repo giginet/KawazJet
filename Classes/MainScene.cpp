@@ -6,6 +6,7 @@
 //
 //
 
+#include "TitleScene.h"
 #include "MainScene.h"
 #include "AudioUtils.h"
 
@@ -278,7 +279,14 @@ void MainScene::onGameOver()
         auto transition = TransitionFade::create(1.0, scene);
         Director::getInstance()->replaceScene(transition);
     });
-    auto menu = Menu::create(menuItem, nullptr);
+    auto returnTitle = MenuItemImage::create("return.png", "return_pressed.png", [](Ref *sender) {
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("decide").c_str());
+        auto scene = TitleScene::createScene();
+        auto transition = TransitionFade::create(1.0, scene);
+        Director::getInstance()->replaceScene(transition);
+    });
+    auto menu = Menu::create(menuItem, returnTitle, nullptr);
+    menu->alignItemsVerticallyWithPadding(20);
     this->addChild(menu);
     menu->setPosition(winSize.width / 2.0, winSize.height / 3);
     
@@ -312,7 +320,14 @@ void MainScene::onClear()
         auto transition = TransitionFade::create(1.0, scene);
         Director::getInstance()->replaceScene(transition);
     });
-    auto menu = Menu::create(menuItem, nullptr);
+    auto returnTitle = MenuItemImage::create("return.png", "return_pressed.png", [](Ref *sender) {
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(AudioUtils::getFileName("decide").c_str());
+        auto scene = TitleScene::createScene();
+        auto transition = TransitionFade::create(1.0, scene);
+        Director::getInstance()->replaceScene(transition);
+    });
+    auto menu = Menu::create(menuItem, returnTitle, nullptr);
+    menu->alignItemsVerticallyWithPadding(20);
     this->addChild(menu);
     menu->setPosition(winSize.width / 2.0, winSize.height / 3.0);
     
