@@ -43,7 +43,10 @@ bool Player::init()
     animation->setDelayPerUnit(0.05);
     this->runAction(RepeatForever::create(Animate::create(animation)));
     
+    auto material = PhysicsMaterial();
     auto body = PhysicsBody::createCircle(this->getContentSize().width / 2.0);
+    material.friction = 0;
+    
     // 剛体の回転を無効にする
     body->setRotationEnable(false);
     // カテゴリをPLAYERにセットする

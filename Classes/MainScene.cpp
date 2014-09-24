@@ -14,7 +14,7 @@ USING_NS_CC;
 /// ステージ数
 const int STAGE_COUNT = 5;
 const Vec2 GRAVITY_ACCELERATION = Vec2(0, -10);
-const Vec2 IMPULSE_ACCELERATION = Vec2(0, 2000);
+const Vec2 IMPULSE_ACCELERATION = Vec2(0, 500);
 const int MAX_ITEM_COUNT = 3;
 
 Scene* MainScene::createSceneWithStage(int level)
