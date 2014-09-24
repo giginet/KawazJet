@@ -234,7 +234,7 @@ void MainScene::update(float dt)
     // 画面外からはみ出したとき、ゲームオーバー判定
     auto winSize = Director::getInstance()->getWinSize();
     auto position = _stage->getPlayer()->getPosition();
-    const auto margin = 100;
+    const auto margin = _stage->getPlayer()->getContentSize().height / 2.0;
     if (position.y < -margin || position.y >= winSize.height + margin) {
         if (this->getState() == State::MAIN) {
             this->onGameOver();

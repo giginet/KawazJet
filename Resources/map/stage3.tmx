@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="150" height="13" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" width="150" height="14" tilewidth="48" tileheight="48">
  <tileset firstgid="1" source="object.tsx"/>
  <tileset firstgid="6" source="terrain.tsx"/>
- <layer name="Terrain" width="150" height="13">
+ <layer name="Terrain" width="150" height="14">
   <data encoding="base64" compression="zlib">
-   eJztmcsKxCAMRV256HQ6w/z/x9ZNoYgmRqPJlHvgQsH4oJ7SFt8hhK9ytpTIJO9Dob0+ZG5eKZ/iTo5RGjMS9VSbB65nweu4s9Y3ArzigVdyLLzK7wHV5gHpvrXWr/KK+ya5h+rT0nYBr3j+3SsL4BUPvJIDr/TR9EqjRvIe7E3OiFe1ceEVvIJX+njzygIPXtXqng68KlPz6lepLV1TdV6w3DePzrQww6uWfj1tVsz6H1w91kqOoHMmJMH6/EqaaDy35fw92VNOCwkXAQ==
+   eJztmdEKwyAMRX3qQ7u1Zf//sfNFGKKJ0Wiy7R64UDCmUk9pS58hhFs5e8zGJJ9Dob0+ZG6OmKu4k2OUem5EPTXmgXQveO07a30jwCseeCXHwqv8GlBjHpDuW2v9Kq+4d5LPUHNaxhLwiufbvbIAXvHAKznwSh9NrzRqJM/B3uSMeFXrC6/gFbzSx5tXFnjwqlb368CrMjWvXpXa0jFV5wXLffPoTAszvGqZ1zNmxazvwdW9VgKveOCVnDPo/GuUYP1fVJq0t/927t48Yt4jHhdI
   </data>
  </layer>
- <layer name="Object" width="150" height="13">
+ <layer name="Object" width="150" height="14">
   <data encoding="base64" compression="zlib">
-   eJztl8sSwBAMRdH+/zd3azIeSRNc5MwYi7YhHI+GgEFqFOcuYlYouRcPIxaqR6XcenDykMatrbk//ZMwOr4U6Z6j9WpU/u5VHc5+Yc0pZxmKr6u8QmOWV701ox139woLhP0qkloTw5qZXrX+iazKLGa0yxlTzjuvsN1UqSXk/eLM1+r5ROH0/KVu0edW+9Vt3J4/xb2yYUT+O99RV3rl9ys8rFwujYGFG5pvd/TqFFZ6xbnbj2Dnc8E5mw+1TQHn
+   eJztl8sSwBAMRdH+/zd3a4xHUkkE98wYi7YhHI+G4IPUKeAuYlZKci8eQiyvHtVyG0HJgxu3teb+9I+Ddnwu3D1n1iut/OFVG8p+Ic0pZ5kXX1d55Q0rr0ZrZnbc4ZUvPOxXsahnYkhj6VXvn0iqWGHRLmVMKe+8zHZTo+aQ94syX6vn0wun5891q3wutV/dxu35l8ArGTTy3/mOutIr3K/8IeVybQwk3Jj5dkevTmGlV5S7vQY7nwsAAMDlAysAAec=
   </data>
  </layer>
 </map>

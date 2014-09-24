@@ -83,7 +83,7 @@ bool Stage::initWithLevel(int level)
     this->runAction(Follow::create(player, Rect(0,
                                                 0,
                                                 _tiledMap->getContentSize().width * _tiledMap->getScale(),
-                                                _tiledMap->getContentSize().height * _tiledMap->getScale())));
+                                                winSize.height)));
 
     this->scheduleUpdate();
     

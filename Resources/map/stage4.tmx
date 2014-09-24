@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="117" height="13" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" width="117" height="14" tilewidth="48" tileheight="48">
  <tileset firstgid="1" name="Object" tilewidth="48" tileheight="48">
   <image source="object.png" width="240" height="48"/>
   <tile id="0">
@@ -113,14 +113,14 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Terrain" width="117" height="13">
+ <layer name="Terrain" width="117" height="14">
   <data encoding="base64" compression="zlib">
-   eJztmEkOACEIBDnNOJv/f+7IB4wLLcR0JRyJxgKJihAEx0Ss5itxV+Jx2FNERt14OD2lXmPJYU8RodP9oNN4zM63FW50DlrMOjptz0ejLizOm07b85FojyaxOe9c4qrEa7DGDqBrIctePRQNy3dmT57V3Uuw9DjVXuW9GB+PtwzBQqcxmPnbRfz3/q2JA+Q=
+   eJztmN0KwCAIRmUXW/vr/R93+QKSS1PiO+BNIEUnkyICHuwDMZu3xSXEHbCmjPx1E+H0IPmMlYA1ZQRO1wNO8zHa32a44T5o0evgtD/fG3Zhsd9w2p/vCddoIZv9ri1OIR6DOVbA+yxUWquGsmH5ztTkWd29wBeNU65V3Iv5iXjLAF/gNAebclwCTnMw8l/v8Yf/AQVSA+4=
   </data>
  </layer>
- <layer name="Object" width="117" height="13">
+ <layer name="Object" width="117" height="14">
   <data encoding="base64" compression="zlib">
-   eJztmGEPgBAQhlH9/7/cp7Zmzjnuzqs8W0tDzONQIehyKL9vRaJTO8mpHUvOSt7l1guex6nmmJdiBclpItItz5J6+eWF1GnvfER0SnmhnHPpVv/WWMRpCTSnrfEp9dga5xpQe8GIUyRPEihf1FqZl5fW84ZzWjtDre70ne6JW64c4n4as3vOqk6/zkicbrDRijmk2EXqiyXW522UceS+L2rU1qbePGkd6n9YqfwspzPWcJT5Zc2fnG5soZzeWMgA4g==
+   eJztmN0OwBAMRtnP+7/yrpYsoqq09TEnWWbBiKPYQtDlVH7fjESndg6ndiy5Cnm3Wy94XqeaY56LFSSnB5GueZbUSy8vpE5b5yOiU8oL5ZxL1/q3xiJOc6A5rY1PqcfaONeA2gt6nCJ5kkD5otbKtLy0njec09IZanan33RL3HLlEPfTmNxTZnW6Oj1xusFGK+aQYhepL5ZYn7dRxpH7vihRWpta86R1qP9hufKjnI5Yw1HmlzV/crqxZTtdD8rpA/YXAOM=
   </data>
  </layer>
 </map>
