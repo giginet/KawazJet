@@ -9,15 +9,26 @@
 /* Begin PBXBuildFile section */
 		070362CB196D111A00FF7CE1 /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 070362C9196D111A00FF7CE1 /* Stage.cpp */; };
 		07249783196CD33F004F0600 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07249781196CD33F004F0600 /* MainScene.cpp */; };
+		07633CF819D2E5B400BB021B /* clear.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07633CE219D2E5B400BB021B /* clear.caf */; };
+		07633CF919D2E5B400BB021B /* main.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07633CE319D2E5B400BB021B /* main.caf */; };
+		07633CFA19D2E5B400BB021B /* title.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07633CE419D2E5B400BB021B /* title.caf */; };
+		07633CFE19D2E5B400BB021B /* coin.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07633CEB19D2E5B400BB021B /* coin.caf */; };
+		07633CFF19D2E5B400BB021B /* complete.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07633CEC19D2E5B400BB021B /* complete.caf */; };
+		07633D0019D2E5B400BB021B /* decide.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07633CED19D2E5B400BB021B /* decide.caf */; };
+		07633D0119D2E5B400BB021B /* explode.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07633CEE19D2E5B400BB021B /* explode.caf */; };
+		07633D0219D2E5B400BB021B /* food.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07633CEF19D2E5B400BB021B /* food.caf */; };
+		07633D0319D2E5B400BB021B /* start.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07633CF019D2E5B400BB021B /* start.caf */; };
 		07823ABE197CD52D00B65C3C /* model in Resources */ = {isa = PBXBuildFile; fileRef = 07823ABD197CD52D00B65C3C /* model */; };
 		07A07C00196CE7AA00545BE5 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 07A07BFF196CE7AA00545BE5 /* images */; };
 		07A07C03196CEC2C00545BE5 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A07C01196CEC2C00545BE5 /* Player.cpp */; };
 		07A07C05196D02AA00545BE5 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 07A07C04196D02AA00545BE5 /* map */; };
 		07A07C14196ED71500545BE5 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 07A07C13196ED71500545BE5 /* fonts */; };
-		07B6DCD0198AF993002440DD /* music in Resources */ = {isa = PBXBuildFile; fileRef = 07B6DCCE198AF992002440DD /* music */; };
-		07B6DCD1198AF993002440DD /* se in Resources */ = {isa = PBXBuildFile; fileRef = 07B6DCCF198AF992002440DD /* se */; };
 		07B6DCD6198AFA6F002440DD /* AudioUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B6DCD4198AFA6F002440DD /* AudioUtils.cpp */; };
 		07B6DCDC198B1CC7002440DD /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B6DCDA198B1CC7002440DD /* TitleScene.cpp */; };
+		07F1288F19D2D52500CD5084 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07F1288E19D2D52500CD5084 /* Info.plist */; };
+		07F1289219D2D54400CD5084 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F1289019D2D54400CD5084 /* Default-Portrait@2x~ipad.png */; };
+		07F1289319D2D54400CD5084 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F1289119D2D54400CD5084 /* Default-Portrait~ipad.png */; };
+		07F1289519D2D55200CD5084 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F1289419D2D55200CD5084 /* Images.xcassets */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -228,18 +239,29 @@
 		070362CA196D111A00FF7CE1 /* Stage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stage.h; path = ../Classes/Stage.h; sourceTree = "<group>"; };
 		07249781196CD33F004F0600 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = ../Classes/MainScene.cpp; sourceTree = "<group>"; };
 		07249782196CD33F004F0600 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = ../Classes/MainScene.h; sourceTree = "<group>"; };
+		07633CE219D2E5B400BB021B /* clear.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = clear.caf; sourceTree = "<group>"; };
+		07633CE319D2E5B400BB021B /* main.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = main.caf; sourceTree = "<group>"; };
+		07633CE419D2E5B400BB021B /* title.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = title.caf; sourceTree = "<group>"; };
+		07633CEB19D2E5B400BB021B /* coin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = coin.caf; sourceTree = "<group>"; };
+		07633CEC19D2E5B400BB021B /* complete.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = complete.caf; sourceTree = "<group>"; };
+		07633CED19D2E5B400BB021B /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = decide.caf; sourceTree = "<group>"; };
+		07633CEE19D2E5B400BB021B /* explode.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explode.caf; sourceTree = "<group>"; };
+		07633CEF19D2E5B400BB021B /* food.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = food.caf; sourceTree = "<group>"; };
+		07633CF019D2E5B400BB021B /* start.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.caf; sourceTree = "<group>"; };
 		07823ABD197CD52D00B65C3C /* model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = model; sourceTree = "<group>"; };
 		07A07BFF196CE7AA00545BE5 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		07A07C01196CEC2C00545BE5 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../Classes/Player.cpp; sourceTree = "<group>"; };
 		07A07C02196CEC2C00545BE5 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../Classes/Player.h; sourceTree = "<group>"; };
 		07A07C04196D02AA00545BE5 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; path = map; sourceTree = "<group>"; };
 		07A07C13196ED71500545BE5 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
-		07B6DCCE198AF992002440DD /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = music; sourceTree = "<group>"; };
-		07B6DCCF198AF992002440DD /* se */ = {isa = PBXFileReference; lastKnownFileType = folder; path = se; sourceTree = "<group>"; };
 		07B6DCD4198AFA6F002440DD /* AudioUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioUtils.cpp; path = ../Classes/AudioUtils.cpp; sourceTree = "<group>"; };
 		07B6DCD5198AFA6F002440DD /* AudioUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioUtils.h; path = ../Classes/AudioUtils.h; sourceTree = "<group>"; };
 		07B6DCDA198B1CC7002440DD /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../Classes/TitleScene.cpp; sourceTree = "<group>"; };
 		07B6DCDB198B1CC7002440DD /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/TitleScene.h; sourceTree = "<group>"; };
+		07F1288E19D2D52500CD5084 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ios/Info.plist; sourceTree = SOURCE_ROOT; };
+		07F1289019D2D54400CD5084 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		07F1289119D2D54400CD5084 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		07F1289419D2D55200CD5084 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "KawazJet iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
@@ -274,7 +296,6 @@
 		5087E77917EB970100C73F5D /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
 		5087E77A17EB970100C73F5D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		5087E77B17EB970100C73F5D /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
-		5087E77C17EB970100C73F5D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5087E78817EB974C00C73F5D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5087E78A17EB975400C73F5D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		50EF629217ECD46A001EB2F8 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
@@ -341,9 +362,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07633CE019D2E5B400BB021B /* music */ = {
+			isa = PBXGroup;
+			children = (
+				07633CE119D2E5B400BB021B /* caf */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
+		07633CE119D2E5B400BB021B /* caf */ = {
+			isa = PBXGroup;
+			children = (
+				07633CE219D2E5B400BB021B /* clear.caf */,
+				07633CE319D2E5B400BB021B /* main.caf */,
+				07633CE419D2E5B400BB021B /* title.caf */,
+			);
+			path = caf;
+			sourceTree = "<group>";
+		};
+		07633CE919D2E5B400BB021B /* se */ = {
+			isa = PBXGroup;
+			children = (
+				07633CEA19D2E5B400BB021B /* caf */,
+			);
+			path = se;
+			sourceTree = "<group>";
+		};
+		07633CEA19D2E5B400BB021B /* caf */ = {
+			isa = PBXGroup;
+			children = (
+				07633CEB19D2E5B400BB021B /* coin.caf */,
+				07633CEC19D2E5B400BB021B /* complete.caf */,
+				07633CED19D2E5B400BB021B /* decide.caf */,
+				07633CEE19D2E5B400BB021B /* explode.caf */,
+				07633CEF19D2E5B400BB021B /* food.caf */,
+				07633CF019D2E5B400BB021B /* start.caf */,
+			);
+			path = caf;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				07F1288E19D2D52500CD5084 /* Info.plist */,
 				5087E77117EB970100C73F5D /* Icons */,
 				503AE0FA17EB989F00D1A890 /* AppController.h */,
 				503AE0FB17EB989F00D1A890 /* AppController.mm */,
@@ -461,6 +522,8 @@
 		5087E77117EB970100C73F5D /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				07F1289019D2D54400CD5084 /* Default-Portrait@2x~ipad.png */,
+				07F1289119D2D54400CD5084 /* Default-Portrait~ipad.png */,
 				5087E77217EB970100C73F5D /* Default-568h@2x.png */,
 				5087E77317EB970100C73F5D /* Default.png */,
 				5087E77417EB970100C73F5D /* Default@2x.png */,
@@ -477,7 +540,6 @@
 				5087E77917EB970100C73F5D /* Icon-57.png */,
 				5087E77A17EB970100C73F5D /* Icon-72.png */,
 				5087E77B17EB970100C73F5D /* Icon-76.png */,
-				5087E77C17EB970100C73F5D /* Info.plist */,
 			);
 			name = Icons;
 			path = ios;
@@ -486,8 +548,9 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				07B6DCCE198AF992002440DD /* music */,
-				07B6DCCF198AF992002440DD /* se */,
+				07633CE019D2E5B400BB021B /* music */,
+				07633CE919D2E5B400BB021B /* se */,
+				07F1289419D2D55200CD5084 /* Images.xcassets */,
 				07823ABD197CD52D00B65C3C /* model */,
 				07A07C13196ED71500545BE5 /* fonts */,
 				07A07C04196D02AA00545BE5 /* map */,
@@ -668,27 +731,38 @@
 				07A07C00196CE7AA00545BE5 /* images in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				07F1289319D2D54400CD5084 /* Default-Portrait~ipad.png in Resources */,
+				07633CF819D2E5B400BB021B /* clear.caf in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
-				07B6DCD0198AF993002440DD /* music in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				07A07C05196D02AA00545BE5 /* map in Resources */,
+				07633D0019D2E5B400BB021B /* decide.caf in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
+				07F1288F19D2D52500CD5084 /* Info.plist in Resources */,
 				07A07C14196ED71500545BE5 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				07633D0119D2E5B400BB021B /* explode.caf in Resources */,
+				07633D0319D2E5B400BB021B /* start.caf in Resources */,
+				07633CFA19D2E5B400BB021B /* title.caf in Resources */,
+				07633CFF19D2E5B400BB021B /* complete.caf in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				07633CFE19D2E5B400BB021B /* coin.caf in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
-				07B6DCD1198AF993002440DD /* se in Resources */,
+				07633D0219D2E5B400BB021B /* food.caf in Resources */,
+				07F1289219D2D54400CD5084 /* Default-Portrait@2x~ipad.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				07823ABE197CD52D00B65C3C /* model in Resources */,
+				07F1289519D2D55200CD5084 /* Images.xcassets in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				07633CF919D2E5B400BB021B /* main.caf in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -808,6 +882,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
@@ -828,7 +904,7 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -841,6 +917,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
@@ -859,7 +937,7 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
