@@ -142,3 +142,4 @@ project.properties
 *.ipa
 
 !Resources/model/*.obj
+*.keystore
