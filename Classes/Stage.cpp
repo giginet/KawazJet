@@ -105,7 +105,11 @@ Sprite* Stage::addPhysicsBody(cocos2d::TMXLayer *layer, cocos2d::Vec2 &coordinat
         // タイルのIDを取り出す
         auto gid = layer->getTileGIDAt(coordinate);
         // タイルのプロパティをmapで取り出す
-        auto properties = _tiledMap->getPropertiesForGID(gid).asValueMap();
+        auto property = _tiledMap->getPropertiesForGID(gid);
+        if (property.isNull() || property.getType() != Value::Type::MAP) {
+            return nullptr;
+        }
+        auto properties = property.asValueMap();
         // プロパティの中からcategoryの値をintとして取り出す
         auto category = properties.at("category").asInt();
         
